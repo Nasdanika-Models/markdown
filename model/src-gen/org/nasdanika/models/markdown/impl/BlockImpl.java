@@ -27,22 +27,11 @@ import org.nasdanika.models.markdown.MarkdownPackage;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.markdown.impl.BlockImpl#getAttributes <em>Attributes</em>}</li>
- *   <li>{@link org.nasdanika.models.markdown.impl.BlockImpl#getText <em>Text</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class BlockImpl extends NodeImpl implements Block {
-	/**
-	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getText()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String TEXT_EDEFAULT = null;
-
+public abstract class BlockImpl extends ContentNodeImpl implements Block {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -79,26 +68,6 @@ public abstract class BlockImpl extends NodeImpl implements Block {
 	 * @generated
 	 */
 	@Override
-	public String getText() {
-		return (String)eDynamicGet(MarkdownPackage.BLOCK__TEXT, MarkdownPackage.Literals.BLOCK__TEXT, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setText(String newText) {
-		eDynamicSet(MarkdownPackage.BLOCK__TEXT, MarkdownPackage.Literals.BLOCK__TEXT, newText);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case MarkdownPackage.BLOCK__ATTRIBUTES:
@@ -117,8 +86,6 @@ public abstract class BlockImpl extends NodeImpl implements Block {
 		switch (featureID) {
 			case MarkdownPackage.BLOCK__ATTRIBUTES:
 				return getAttributes();
-			case MarkdownPackage.BLOCK__TEXT:
-				return getText();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -136,9 +103,6 @@ public abstract class BlockImpl extends NodeImpl implements Block {
 				getAttributes().clear();
 				getAttributes().addAll((Collection<? extends Attribute>)newValue);
 				return;
-			case MarkdownPackage.BLOCK__TEXT:
-				setText((String)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -154,9 +118,6 @@ public abstract class BlockImpl extends NodeImpl implements Block {
 			case MarkdownPackage.BLOCK__ATTRIBUTES:
 				getAttributes().clear();
 				return;
-			case MarkdownPackage.BLOCK__TEXT:
-				setText(TEXT_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -171,8 +132,6 @@ public abstract class BlockImpl extends NodeImpl implements Block {
 		switch (featureID) {
 			case MarkdownPackage.BLOCK__ATTRIBUTES:
 				return !getAttributes().isEmpty();
-			case MarkdownPackage.BLOCK__TEXT:
-				return TEXT_EDEFAULT == null ? getText() != null : !TEXT_EDEFAULT.equals(getText());
 		}
 		return super.eIsSet(featureID);
 	}

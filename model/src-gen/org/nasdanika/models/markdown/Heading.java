@@ -2,7 +2,6 @@
  */
 package org.nasdanika.models.markdown;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.markdown.Heading#getLevel <em>Level</em>}</li>
- *   <li>{@link org.nasdanika.models.markdown.Heading#getInlines <em>Inlines</em>}</li>
+ *   <li>{@link org.nasdanika.models.markdown.Heading#getText <em>Text</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.models.markdown.MarkdownPackage#getHeading()
@@ -54,19 +53,25 @@ public interface Heading extends Block {
 	void setLevel(HeadingLevel value);
 
 	/**
-	 * Returns the value of the '<em><b>Inlines</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.models.markdown.Inline}.
+	 * Returns the value of the '<em><b>Text</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * *
-	 * Inline content of the heading (may contain emphasis, links, …).
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Inlines</em>' containment reference list.
-	 * @see org.nasdanika.models.markdown.MarkdownPackage#getHeading_Inlines()
-	 * @model containment="true"
+	 * @return the value of the '<em>Text</em>' attribute.
+	 * @see #setText(String)
+	 * @see org.nasdanika.models.markdown.MarkdownPackage#getHeading_Text()
+	 * @model unique="false"
 	 * @generated
 	 */
-	EList<Inline> getInlines();
+	String getText();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.models.markdown.Heading#getText <em>Text</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Text</em>' attribute.
+	 * @see #getText()
+	 * @generated
+	 */
+	void setText(String value);
 
 } // Heading

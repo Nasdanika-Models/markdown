@@ -2,7 +2,6 @@
  */
 package org.nasdanika.models.markdown;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,7 +17,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.models.markdown.Document#getBlocks <em>Blocks</em>}</li>
  *   <li>{@link org.nasdanika.models.markdown.Document#getSourceUri <em>Source Uri</em>}</li>
  * </ul>
  *
@@ -27,22 +25,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Document extends Block {
-	/**
-	 * Returns the value of the '<em><b>Blocks</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.models.markdown.Block}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * *
-	 * Top-level block children, in document order.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Blocks</em>' containment reference list.
-	 * @see org.nasdanika.models.markdown.MarkdownPackage#getDocument_Blocks()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Block> getBlocks();
-
 	/**
 	 * Returns the value of the '<em><b>Source Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->

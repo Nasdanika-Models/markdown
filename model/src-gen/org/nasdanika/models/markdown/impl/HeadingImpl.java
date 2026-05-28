@@ -2,20 +2,10 @@
  */
 package org.nasdanika.models.markdown.impl;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.nasdanika.models.markdown.Heading;
 import org.nasdanika.models.markdown.HeadingLevel;
-import org.nasdanika.models.markdown.Inline;
 import org.nasdanika.models.markdown.MarkdownPackage;
 
 /**
@@ -27,7 +17,7 @@ import org.nasdanika.models.markdown.MarkdownPackage;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.markdown.impl.HeadingImpl#getLevel <em>Level</em>}</li>
- *   <li>{@link org.nasdanika.models.markdown.impl.HeadingImpl#getInlines <em>Inlines</em>}</li>
+ *   <li>{@link org.nasdanika.models.markdown.impl.HeadingImpl#getText <em>Text</em>}</li>
  * </ul>
  *
  * @generated
@@ -42,6 +32,16 @@ public class HeadingImpl extends BlockImpl implements Heading {
 	 * @ordered
 	 */
 	protected static final HeadingLevel LEVEL_EDEFAULT = HeadingLevel.H1;
+
+	/**
+	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getText()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TEXT_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,10 +87,9 @@ public class HeadingImpl extends BlockImpl implements Heading {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Inline> getInlines() {
-		return (EList<Inline>)eDynamicGet(MarkdownPackage.HEADING__INLINES, MarkdownPackage.Literals.HEADING__INLINES, true, true);
+	public String getText() {
+		return (String)eDynamicGet(MarkdownPackage.HEADING__TEXT, MarkdownPackage.Literals.HEADING__TEXT, true, true);
 	}
 
 	/**
@@ -99,12 +98,8 @@ public class HeadingImpl extends BlockImpl implements Heading {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case MarkdownPackage.HEADING__INLINES:
-				return ((InternalEList<?>)getInlines()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public void setText(String newText) {
+		eDynamicSet(MarkdownPackage.HEADING__TEXT, MarkdownPackage.Literals.HEADING__TEXT, newText);
 	}
 
 	/**
@@ -117,8 +112,8 @@ public class HeadingImpl extends BlockImpl implements Heading {
 		switch (featureID) {
 			case MarkdownPackage.HEADING__LEVEL:
 				return getLevel();
-			case MarkdownPackage.HEADING__INLINES:
-				return getInlines();
+			case MarkdownPackage.HEADING__TEXT:
+				return getText();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -128,16 +123,14 @@ public class HeadingImpl extends BlockImpl implements Heading {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case MarkdownPackage.HEADING__LEVEL:
 				setLevel((HeadingLevel)newValue);
 				return;
-			case MarkdownPackage.HEADING__INLINES:
-				getInlines().clear();
-				getInlines().addAll((Collection<? extends Inline>)newValue);
+			case MarkdownPackage.HEADING__TEXT:
+				setText((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -154,8 +147,8 @@ public class HeadingImpl extends BlockImpl implements Heading {
 			case MarkdownPackage.HEADING__LEVEL:
 				setLevel(LEVEL_EDEFAULT);
 				return;
-			case MarkdownPackage.HEADING__INLINES:
-				getInlines().clear();
+			case MarkdownPackage.HEADING__TEXT:
+				setText(TEXT_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -171,8 +164,8 @@ public class HeadingImpl extends BlockImpl implements Heading {
 		switch (featureID) {
 			case MarkdownPackage.HEADING__LEVEL:
 				return getLevel() != LEVEL_EDEFAULT;
-			case MarkdownPackage.HEADING__INLINES:
-				return !getInlines().isEmpty();
+			case MarkdownPackage.HEADING__TEXT:
+				return TEXT_EDEFAULT == null ? getText() != null : !TEXT_EDEFAULT.equals(getText());
 		}
 		return super.eIsSet(featureID);
 	}

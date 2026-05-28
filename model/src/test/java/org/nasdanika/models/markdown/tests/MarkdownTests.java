@@ -2,10 +2,12 @@ package org.nasdanika.models.markdown.tests;
 
 import java.io.File;
 import java.util.List;
+import java.util.function.BiConsumer;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.nasdanika.capability.CapabilityLoader;
 import org.nasdanika.capability.ServiceCapabilityFactory;
@@ -19,13 +21,17 @@ import org.nasdanika.models.markdown.loader.MarkdownVisitor;
 
 import com.vladsch.flexmark.ext.attributes.AttributesExtension;
 import com.vladsch.flexmark.parser.Parser;
+import com.vladsch.flexmark.util.ast.Block;
 import com.vladsch.flexmark.util.ast.Node;
+import com.vladsch.flexmark.util.ast.NodeVisitor;
+import com.vladsch.flexmark.util.ast.Visitor;
 import com.vladsch.flexmark.util.data.MutableDataSet;
+import com.vladsch.flexmark.util.sequence.BasedSequence;
 
 public class MarkdownTests {
 	
 	@Test
-	public void testMarkdownVisitor() throws Exception {
+	public void testVisitMarkdown() throws Exception {
         // ── 1. Configure parser with the Attributes extension ─────────────────
         MutableDataSet options = new MutableDataSet();
         options.set(Parser.EXTENSIONS, List.of(AttributesExtension.create()));
@@ -49,6 +55,66 @@ public class MarkdownTests {
                 """;
 
         Node document = parser.parse(source);
+        
+        NodeVisitor visitor = new NodeVisitor() {
+        	
+        	@Override
+        	protected void processNode(
+        			@NotNull Node node, 
+        			boolean withChildren,
+        			@NotNull BiConsumer<Node, Visitor<Node>> processor) {
+        		super.processNode(node, withChildren, processor);
+        		
+        		if (node instanceof Block) {
+	        		System.out.println("Processing node: " + node.getClass().getSimpleName() + "@" + node.getStartLineNumber() + " with text: " + node.getChars());
+	        		System.out.println("\tSegments: ");	        		
+	        		System.out.println("\tParent: " + node.getParent());
+        		}
+        	}
+        	        	
+        };
+		
+        visitor.visit(document);
+	}
+	
+	
+	@Test
+	public void testMarkdownVisitor() throws Exception {
+        // ── 1. Configure parser with the Attributes extension ─────────────────
+        MutableDataSet options = new MutableDataSet();
+        options.set(Parser.EXTENSIONS, List.of(AttributesExtension.create()));
+
+        Parser parser = Parser.builder(options).build();
+
+        // ── 2. Parse source ───────────────────────────────────────────────────
+        String source = """        		
+                # Heading {id="intro" class="title"}
+
+                A paragraph with **bold** text. {lang="en"}
+
+                - item one {.highlight}
+                - item two
+                
+                ## Heading 2
+                
+                My important info
+                
+                ### Heading 3
+                
+                Even more important info
+                
+                ## Heading 2 again
+                
+                purum param {#id .class key=value}
+                
+                # Heading 1 again
+                
+                zusu
+
+                
+                """;
+
+        com.vladsch.flexmark.util.ast.@NotNull Document document = parser.parse(source);
 
         // ── 3. Bootstrap the Ecore root ───────────────────────────────────────
         //  Replace MarkdownFactory / MarkdownPackage with your generated classes.

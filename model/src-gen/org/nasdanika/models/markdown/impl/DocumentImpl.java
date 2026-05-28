@@ -2,18 +2,8 @@
  */
 package org.nasdanika.models.markdown.impl;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.nasdanika.models.markdown.Block;
 import org.nasdanika.models.markdown.Document;
 import org.nasdanika.models.markdown.MarkdownPackage;
 
@@ -25,7 +15,6 @@ import org.nasdanika.models.markdown.MarkdownPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.models.markdown.impl.DocumentImpl#getBlocks <em>Blocks</em>}</li>
  *   <li>{@link org.nasdanika.models.markdown.impl.DocumentImpl#getSourceUri <em>Source Uri</em>}</li>
  * </ul>
  *
@@ -66,17 +55,6 @@ public class DocumentImpl extends BlockImpl implements Document {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public EList<Block> getBlocks() {
-		return (EList<Block>)eDynamicGet(MarkdownPackage.DOCUMENT__BLOCKS, MarkdownPackage.Literals.DOCUMENT__BLOCKS, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public String getSourceUri() {
 		return (String)eDynamicGet(MarkdownPackage.DOCUMENT__SOURCE_URI, MarkdownPackage.Literals.DOCUMENT__SOURCE_URI, true, true);
@@ -98,24 +76,8 @@ public class DocumentImpl extends BlockImpl implements Document {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case MarkdownPackage.DOCUMENT__BLOCKS:
-				return ((InternalEList<?>)getBlocks()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MarkdownPackage.DOCUMENT__BLOCKS:
-				return getBlocks();
 			case MarkdownPackage.DOCUMENT__SOURCE_URI:
 				return getSourceUri();
 		}
@@ -127,14 +89,9 @@ public class DocumentImpl extends BlockImpl implements Document {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MarkdownPackage.DOCUMENT__BLOCKS:
-				getBlocks().clear();
-				getBlocks().addAll((Collection<? extends Block>)newValue);
-				return;
 			case MarkdownPackage.DOCUMENT__SOURCE_URI:
 				setSourceUri((String)newValue);
 				return;
@@ -150,9 +107,6 @@ public class DocumentImpl extends BlockImpl implements Document {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MarkdownPackage.DOCUMENT__BLOCKS:
-				getBlocks().clear();
-				return;
 			case MarkdownPackage.DOCUMENT__SOURCE_URI:
 				setSourceUri(SOURCE_URI_EDEFAULT);
 				return;
@@ -168,8 +122,6 @@ public class DocumentImpl extends BlockImpl implements Document {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MarkdownPackage.DOCUMENT__BLOCKS:
-				return !getBlocks().isEmpty();
 			case MarkdownPackage.DOCUMENT__SOURCE_URI:
 				return SOURCE_URI_EDEFAULT == null ? getSourceUri() != null : !SOURCE_URI_EDEFAULT.equals(getSourceUri());
 		}

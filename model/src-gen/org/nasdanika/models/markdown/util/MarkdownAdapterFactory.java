@@ -72,44 +72,16 @@ public class MarkdownAdapterFactory extends AdapterFactoryImpl {
 				return createNodeAdapter();
 			}
 			@Override
+			public Adapter caseContentNode(ContentNode object) {
+				return createContentNodeAdapter();
+			}
+			@Override
 			public Adapter caseAttribute(Attribute object) {
 				return createAttributeAdapter();
 			}
 			@Override
 			public Adapter caseAttributable(Attributable object) {
 				return createAttributableAdapter();
-			}
-			@Override
-			public Adapter caseInline(Inline object) {
-				return createInlineAdapter();
-			}
-			@Override
-			public Adapter caseText(Text object) {
-				return createTextAdapter();
-			}
-			@Override
-			public Adapter caseEmphasis(Emphasis object) {
-				return createEmphasisAdapter();
-			}
-			@Override
-			public Adapter caseInlineCode(InlineCode object) {
-				return createInlineCodeAdapter();
-			}
-			@Override
-			public Adapter caseLink(Link object) {
-				return createLinkAdapter();
-			}
-			@Override
-			public Adapter caseImage(Image object) {
-				return createImageAdapter();
-			}
-			@Override
-			public Adapter caseHardBreak(HardBreak object) {
-				return createHardBreakAdapter();
-			}
-			@Override
-			public Adapter caseRawInline(RawInline object) {
-				return createRawInlineAdapter();
 			}
 			@Override
 			public Adapter caseBlock(Block object) {
@@ -124,48 +96,8 @@ public class MarkdownAdapterFactory extends AdapterFactoryImpl {
 				return createParagraphAdapter();
 			}
 			@Override
-			public Adapter caseThematicBreak(ThematicBreak object) {
-				return createThematicBreakAdapter();
-			}
-			@Override
 			public Adapter caseCodeBlock(CodeBlock object) {
 				return createCodeBlockAdapter();
-			}
-			@Override
-			public Adapter caseHtmlBlock(HtmlBlock object) {
-				return createHtmlBlockAdapter();
-			}
-			@Override
-			public Adapter caseBlockQuote(BlockQuote object) {
-				return createBlockQuoteAdapter();
-			}
-			@Override
-			public Adapter caseListItem(ListItem object) {
-				return createListItemAdapter();
-			}
-			@Override
-			public Adapter caseList(List object) {
-				return createListAdapter();
-			}
-			@Override
-			public Adapter caseTable(Table object) {
-				return createTableAdapter();
-			}
-			@Override
-			public Adapter caseTableRow(TableRow object) {
-				return createTableRowAdapter();
-			}
-			@Override
-			public Adapter caseTableCell(TableCell object) {
-				return createTableCellAdapter();
-			}
-			@Override
-			public Adapter caseDefinitionTerm(DefinitionTerm object) {
-				return createDefinitionTermAdapter();
-			}
-			@Override
-			public Adapter caseDefinitionItem(DefinitionItem object) {
-				return createDefinitionItemAdapter();
 			}
 			@Override
 			public Adapter caseDocument(Document object) {
@@ -206,6 +138,20 @@ public class MarkdownAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.ContentNode <em>Content Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.markdown.ContentNode
+	 * @generated
+	 */
+	public Adapter createContentNodeAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.Attribute <em>Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -230,118 +176,6 @@ public class MarkdownAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAttributableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.Inline <em>Inline</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.Inline
-	 * @generated
-	 */
-	public Adapter createInlineAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.Text <em>Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.Text
-	 * @generated
-	 */
-	public Adapter createTextAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.Emphasis <em>Emphasis</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.Emphasis
-	 * @generated
-	 */
-	public Adapter createEmphasisAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.InlineCode <em>Inline Code</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.InlineCode
-	 * @generated
-	 */
-	public Adapter createInlineCodeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.Link <em>Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.Link
-	 * @generated
-	 */
-	public Adapter createLinkAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.Image <em>Image</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.Image
-	 * @generated
-	 */
-	public Adapter createImageAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.HardBreak <em>Hard Break</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.HardBreak
-	 * @generated
-	 */
-	public Adapter createHardBreakAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.RawInline <em>Raw Inline</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.RawInline
-	 * @generated
-	 */
-	public Adapter createRawInlineAdapter() {
 		return null;
 	}
 
@@ -388,20 +222,6 @@ public class MarkdownAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.ThematicBreak <em>Thematic Break</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.ThematicBreak
-	 * @generated
-	 */
-	public Adapter createThematicBreakAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.CodeBlock <em>Code Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -412,132 +232,6 @@ public class MarkdownAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCodeBlockAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.HtmlBlock <em>Html Block</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.HtmlBlock
-	 * @generated
-	 */
-	public Adapter createHtmlBlockAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.BlockQuote <em>Block Quote</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.BlockQuote
-	 * @generated
-	 */
-	public Adapter createBlockQuoteAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.ListItem <em>List Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.ListItem
-	 * @generated
-	 */
-	public Adapter createListItemAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.List <em>List</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.List
-	 * @generated
-	 */
-	public Adapter createListAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.Table <em>Table</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.Table
-	 * @generated
-	 */
-	public Adapter createTableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.TableRow <em>Table Row</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.TableRow
-	 * @generated
-	 */
-	public Adapter createTableRowAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.TableCell <em>Table Cell</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.TableCell
-	 * @generated
-	 */
-	public Adapter createTableCellAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.DefinitionTerm <em>Definition Term</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.DefinitionTerm
-	 * @generated
-	 */
-	public Adapter createDefinitionTermAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.DefinitionItem <em>Definition Item</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.DefinitionItem
-	 * @generated
-	 */
-	public Adapter createDefinitionItemAdapter() {
 		return null;
 	}
 
