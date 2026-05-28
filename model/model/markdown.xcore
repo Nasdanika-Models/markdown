@@ -1,0 +1,321 @@
+@Ecore(nsURI="https://markdown.models.nasdanika.org", nsPrefix="org.nasdanika.models.markdown")
+@GenModel(
+    featureDelegation="Dynamic",
+    complianceLevel="21.0",
+    suppressGenModelAnnotations="false",
+    copyrightFields="false",
+    operationReflection="true",
+    importOrganizing="true"
+)
+package org.nasdanika.models.markdown
+
+annotation "http://www.eclipse.org/emf/2002/Ecore" as Ecore
+annotation "http://www.eclipse.org/emf/2002/GenModel" as GenModel
+annotation "urn:org.nasdanika" as Nasdanika
+
+class Node {
+    
+    int startOffset
+    int startLineNumber
+    
+    int endOffset
+    int endLineNumber
+            
+}
+
+/**
+ * Heading levels 1–6, matching ATX / Setext heading syntax.
+ */
+enum HeadingLevel {
+    H1 = 1
+    H2 = 2
+    H3 = 3
+    H4 = 4
+    H5 = 5
+    H6 = 6
+}
+
+/**
+ * The delimiter used for a list — bullet (unordered) or ordered.
+ */
+enum ListType {
+    BULLET    = 0
+    ORDERED   = 1
+}
+
+/**
+ * Emphasis weight for inline spans.
+ */
+enum EmphasisKind {
+    ITALIC = 0   // single * or _
+    BOLD   = 1   // double ** or __
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Attribute (from the Flexmark attributes extension  { key="value" })
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * A single key/value pair produced by { attr="value" }, { #id }, { .class }.
+ * Instances are owned by any MAttributable node.
+ */
+class Attribute {
+    /**
+     * Attribute name as written — e.g. "id", "class", "lang", "data-foo".
+     */
+    String[1] key
+
+    /**
+     * Raw attribute value string (may be empty for bare class/id short-hands).
+     */
+    String    value
+}
+
+/**
+ * Mixin interface — any node that can carry Flexmark attribute blocks.
+ */
+interface Attributable {
+    /**
+     * All attributes parsed from the { ... } block that follows this node.
+     */
+    contains Attribute[] attributes
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Inline nodes
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Base class for all inline-level content (runs of text, spans, links, …).
+ */
+abstract class Inline {
+    
+}
+
+/**
+ * A run of plain, unformatted text.
+ */
+class Text extends Inline {
+    String[1] value
+}
+
+/**
+ * An emphasis span (* / ** / _ / __).
+ */
+class Emphasis extends Inline {
+    EmphasisKind[1] kind = "ITALIC"
+    contains Inline[] children
+}
+
+/**
+ * Inline code  (`code`).
+ */
+class InlineCode extends Inline {
+    String[1] value
+}
+
+/**
+ * A hyperlink  [label](href "title").
+ */
+class Link extends Inline, Attributable {
+    String[1]       href
+    String          title
+    contains Inline[] label
+}
+
+/**
+ * An image  ![alt](src "title").
+ */
+class Image extends Inline, Attributable {
+    String[1] src
+    String    alt
+    String    title
+}
+
+/**
+ * A hard line-break (two trailing spaces or backslash before newline).
+ */
+class HardBreak extends Inline {}
+
+/**
+ * Raw HTML inline fragment.
+ */
+class RawInline extends Inline {
+    String[1] html
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Block nodes
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Base class for all block-level elements.
+ * Every block may carry Flexmark attributes.
+ */
+abstract class Block extends Node, Attributable {
+    String text    
+}
+
+/**
+ * A heading (# … ######).
+ */
+class Heading extends Block {
+    HeadingLevel[1] level = "H1"
+    /**
+     * Inline content of the heading (may contain emphasis, links, …).
+     */
+    contains Inline[] inlines
+    
+}
+
+/**
+ * A paragraph — one or more lines of inline content.
+ */
+class Paragraph extends Block {
+    contains Inline[] inlines
+}
+
+/**
+ * A thematic break (---, ***, ___).
+ */
+class ThematicBreak extends Block {
+    
+}
+
+/**
+ * A fenced or indented code block.
+ */
+class CodeBlock extends Block {
+    /**
+     * Info string after the opening fence — typically a language identifier.
+     * Empty for indented code blocks.
+     */
+    String language
+    /**
+     * Raw source text of the code, preserving newlines.
+     */
+    String[1] content
+}
+
+/**
+ * A block-level raw HTML section.
+ */
+class HtmlBlock extends Block {
+    String[1] html
+}
+
+/**
+ * A block quote  (> …).
+ */
+class BlockQuote extends Block {
+    contains Block[] children
+}
+
+/**
+ * A single item inside a list (bullet or ordered).
+ * Items may themselves contain block-level children (nested lists, paragraphs).
+ */
+class ListItem extends Block {
+    /**
+     * Checked state for task-list items; null means not a task-list item.
+     */
+    Boolean checked
+    contains Block[] children
+}
+
+/**
+ * A bullet (unordered) or ordered list.
+ */
+class List extends Block {
+    ListType[1] listType = "BULLET"
+    /**
+     * Starting number for ordered lists (ignored for bullet lists).
+     */
+    int startNumber = "1"
+    /**
+     * Whether list items are separated by blank lines (loose) or not (tight).
+     */
+    boolean loose
+    contains ListItem[] items
+}
+
+/**
+ * A GFM-style table.
+ */
+class Table extends Block {
+    contains TableRow header
+    contains TableRow[] body
+}
+
+class TableRow extends Attributable {
+    contains TableCell[] cells
+}
+
+class TableCell extends Attributable {
+    /**
+     * Alignment hint from the separator row (null = unspecified).
+     */
+    String alignment   // "left" | "center" | "right"
+    boolean isHeader
+    contains Inline[] inlines
+}
+
+/**
+ * A definition-list term (used with some extensions).
+ */
+class DefinitionTerm extends Block {
+    contains Inline[] inlines
+}
+
+class DefinitionItem extends Block {
+    contains Block[] children
+}
+
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Document root
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Root of the Markdown AST.  Corresponds to a single parsed file or string.
+ */
+class Document extends Block {
+    /**
+     * Top-level block children, in document order.
+     */
+    contains Block[] blocks
+
+    /**
+     * Optional: source file path stored for traceability.
+     */
+    String sourceUri
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
