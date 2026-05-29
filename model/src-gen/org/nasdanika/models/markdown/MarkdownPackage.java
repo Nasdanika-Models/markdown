@@ -325,13 +325,31 @@ public interface MarkdownPackage extends EPackage {
 	int ATTRIBUTABLE__ATTRIBUTES = 0;
 
 	/**
+	 * The feature id for the '<em><b>Attributes Start Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTABLE__ATTRIBUTES_START_OFFSET = 1;
+
+	/**
+	 * The feature id for the '<em><b>Attributes End Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTABLE__ATTRIBUTES_END_OFFSET = 2;
+
+	/**
 	 * The number of structural features of the '<em>Attributable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTABLE_FEATURE_COUNT = 1;
+	int ATTRIBUTABLE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Attributable</em>' class.
@@ -434,13 +452,31 @@ public interface MarkdownPackage extends EPackage {
 	int BLOCK__ATTRIBUTES = CONTENT_NODE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Attributes Start Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__ATTRIBUTES_START_OFFSET = CONTENT_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Attributes End Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCK__ATTRIBUTES_END_OFFSET = CONTENT_NODE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Block</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BLOCK_FEATURE_COUNT = CONTENT_NODE_FEATURE_COUNT + 1;
+	int BLOCK_FEATURE_COUNT = CONTENT_NODE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Block</em>' class.
@@ -541,6 +577,24 @@ public interface MarkdownPackage extends EPackage {
 	 * @ordered
 	 */
 	int HEADING__ATTRIBUTES = BLOCK__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Attributes Start Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__ATTRIBUTES_START_OFFSET = BLOCK__ATTRIBUTES_START_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>Attributes End Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__ATTRIBUTES_END_OFFSET = BLOCK__ATTRIBUTES_END_OFFSET;
 
 	/**
 	 * The feature id for the '<em><b>Level</b></em>' attribute.
@@ -670,6 +724,24 @@ public interface MarkdownPackage extends EPackage {
 	int PARAGRAPH__ATTRIBUTES = BLOCK__ATTRIBUTES;
 
 	/**
+	 * The feature id for the '<em><b>Attributes Start Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAGRAPH__ATTRIBUTES_START_OFFSET = BLOCK__ATTRIBUTES_START_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>Attributes End Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAGRAPH__ATTRIBUTES_END_OFFSET = BLOCK__ATTRIBUTES_END_OFFSET;
+
+	/**
 	 * The number of structural features of the '<em>Paragraph</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -779,6 +851,24 @@ public interface MarkdownPackage extends EPackage {
 	int CODE_BLOCK__ATTRIBUTES = BLOCK__ATTRIBUTES;
 
 	/**
+	 * The feature id for the '<em><b>Attributes Start Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CODE_BLOCK__ATTRIBUTES_START_OFFSET = BLOCK__ATTRIBUTES_START_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>Attributes End Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CODE_BLOCK__ATTRIBUTES_END_OFFSET = BLOCK__ATTRIBUTES_END_OFFSET;
+
+	/**
 	 * The number of structural features of the '<em>Code Block</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -886,6 +976,24 @@ public interface MarkdownPackage extends EPackage {
 	 * @ordered
 	 */
 	int DOCUMENT__ATTRIBUTES = BLOCK__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Attributes Start Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__ATTRIBUTES_START_OFFSET = BLOCK__ATTRIBUTES_START_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>Attributes End Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__ATTRIBUTES_END_OFFSET = BLOCK__ATTRIBUTES_END_OFFSET;
 
 	/**
 	 * The feature id for the '<em><b>Source Uri</b></em>' attribute.
@@ -1085,6 +1193,28 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAttributable_Attributes();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.Attributable#getAttributesStartOffset <em>Attributes Start Offset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Attributes Start Offset</em>'.
+	 * @see org.nasdanika.models.markdown.Attributable#getAttributesStartOffset()
+	 * @see #getAttributable()
+	 * @generated
+	 */
+	EAttribute getAttributable_AttributesStartOffset();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.Attributable#getAttributesEndOffset <em>Attributes End Offset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Attributes End Offset</em>'.
+	 * @see org.nasdanika.models.markdown.Attributable#getAttributesEndOffset()
+	 * @see #getAttributable()
+	 * @generated
+	 */
+	EAttribute getAttributable_AttributesEndOffset();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.markdown.Block <em>Block</em>}'.
@@ -1329,6 +1459,22 @@ public interface MarkdownPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ATTRIBUTABLE__ATTRIBUTES = eINSTANCE.getAttributable_Attributes();
+
+		/**
+		 * The meta object literal for the '<em><b>Attributes Start Offset</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ATTRIBUTABLE__ATTRIBUTES_START_OFFSET = eINSTANCE.getAttributable_AttributesStartOffset();
+
+		/**
+		 * The meta object literal for the '<em><b>Attributes End Offset</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ATTRIBUTABLE__ATTRIBUTES_END_OFFSET = eINSTANCE.getAttributable_AttributesEndOffset();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.markdown.impl.BlockImpl <em>Block</em>}' class.

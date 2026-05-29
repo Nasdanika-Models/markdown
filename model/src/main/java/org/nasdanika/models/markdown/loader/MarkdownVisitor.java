@@ -1,13 +1,12 @@
 package org.nasdanika.models.markdown.loader;
 
-import java.util.Iterator;
+import java.util.IdentityHashMap;
+import java.util.Map;
 
+import org.nasdanika.models.markdown.Attributable;
 import org.nasdanika.models.markdown.MarkdownFactory;
 
-import com.vladsch.flexmark.ast.BulletListItem;
-import com.vladsch.flexmark.ast.FencedCodeBlock;
 import com.vladsch.flexmark.ast.Heading;
-import com.vladsch.flexmark.ast.Paragraph;
 import com.vladsch.flexmark.ext.attributes.AttributeNode;
 import com.vladsch.flexmark.ext.attributes.AttributesNode;
 import com.vladsch.flexmark.util.ast.ContentNode;
@@ -17,9 +16,11 @@ import com.vladsch.flexmark.util.ast.NodeVisitor;
 import com.vladsch.flexmark.util.ast.VisitHandler;
 
 public class MarkdownVisitor {
-
+	
     private final org.nasdanika.models.markdown.Document root;          // your Ecore root
-    private org.nasdanika.models.markdown.Block currentBlock;           // tracks current parent block
+    
+    private Map<Node, org.nasdanika.models.markdown.Node> nodeMap = new IdentityHashMap<>();  // to keep track of created Ecore nodes for each visited AST node
+    
     private org.nasdanika.models.markdown.Block currentContainerBlock;  
 
     public MarkdownVisitor(org.nasdanika.models.markdown.Document root) {
@@ -40,6 +41,7 @@ public class MarkdownVisitor {
     	populateContentNode(document, root);
         visitor.visit(document);
         root.setContentEndOffset(root.getEndOffset());
+        root.setContent(root.getChars());
         setChildrenContent(root.getChars(), root);        
     }
     
@@ -54,6 +56,7 @@ public class MarkdownVisitor {
 		}
 		if (childNode != null) {
 			childNode.setContent(docContent.substring(childNode.getStartOffset(), node.getContentEndOffset()));
+			childNode.setContentEndOffset(node.getContentEndOffset());
 		}    	
 		
 		// Second pass with content end offsets set
@@ -85,7 +88,7 @@ public class MarkdownVisitor {
 			currentContainerBlock = (org.nasdanika.models.markdown.Block) currentContainerBlock.eContainer();
 		}
         currentContainerBlock.getChildren().add(heading);
-        currentBlock = heading;
+        nodeMap.put(node, heading);
         currentContainerBlock = heading; 
 
         visitor.visitChildren(node);   // recurse so AttributesNode is caught
@@ -130,7 +133,9 @@ public class MarkdownVisitor {
      * so currentBlock is already set when this fires.
      */
     private void visitAttributes(AttributesNode node) {
-        if (currentBlock != null) {
+        if (nodeMap.get(node.getParent()) instanceof Attributable attributable) {
+        	attributable.setAttributesStartOffset(node.getStartOffset());
+        	attributable.setAttributesEndOffset(node.getEndOffset());
 	        for (Node child : node.getChildren()) {
 	            if (child instanceof AttributeNode attr) {
 	                String key   = attr.getName().toString();
@@ -139,7 +144,7 @@ public class MarkdownVisitor {
 	                org.nasdanika.models.markdown.Attribute ecoreAttr = getFactory().createAttribute();
 	                ecoreAttr.setKey(key);
 	                ecoreAttr.setValue(value);
-	                currentBlock.getAttributes().add(ecoreAttr);
+	                attributable.getAttributes().add(ecoreAttr);
 	            }
 	        }
         }

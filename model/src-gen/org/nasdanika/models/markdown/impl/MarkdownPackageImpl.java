@@ -320,6 +320,26 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 	 * @generated
 	 */
 	@Override
+	public EAttribute getAttributable_AttributesStartOffset() {
+		return (EAttribute)attributableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getAttributable_AttributesEndOffset() {
+		return (EAttribute)attributableEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getBlock() {
 		return blockEClass;
 	}
@@ -451,6 +471,8 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 
 		attributableEClass = createEClass(ATTRIBUTABLE);
 		createEReference(attributableEClass, ATTRIBUTABLE__ATTRIBUTES);
+		createEAttribute(attributableEClass, ATTRIBUTABLE__ATTRIBUTES_START_OFFSET);
+		createEAttribute(attributableEClass, ATTRIBUTABLE__ATTRIBUTES_END_OFFSET);
 
 		blockEClass = createEClass(BLOCK);
 
@@ -527,6 +549,8 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 
 		initEClass(attributableEClass, Attributable.class, "Attributable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAttributable_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, Attributable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttributable_AttributesStartOffset(), theEcorePackage.getEInt(), "attributesStartOffset", null, 0, 1, Attributable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttributable_AttributesEndOffset(), theEcorePackage.getEInt(), "attributesEndOffset", null, 0, 1, Attributable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(blockEClass, Block.class, "Block", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

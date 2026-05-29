@@ -1,5 +1,6 @@
 import org.nasdanika.capability.CapabilityFactory;
 import org.nasdanika.models.markdown.capability.MarkdownEPackageResourceSetCapabilityFactory;
+import org.nasdanika.models.markdown.capability.MarkdownResourceFactoryCapabilityFactory;
 
 module org.nasdanika.models.markdown {
 	
@@ -24,6 +25,7 @@ module org.nasdanika.models.markdown {
 	requires flexmark.ext.attributes; 	
 	
 	provides CapabilityFactory with 
-		MarkdownEPackageResourceSetCapabilityFactory;
+		MarkdownEPackageResourceSetCapabilityFactory,
+		MarkdownResourceFactoryCapabilityFactory;
 	
 }

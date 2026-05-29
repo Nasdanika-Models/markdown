@@ -76,8 +76,7 @@ public class MarkdownTests {
 		
         visitor.visit(document);
 	}
-	
-	
+		
 	@Test
 	public void testMarkdownVisitor() throws Exception {
         // ── 1. Configure parser with the Attributes extension ─────────────────
@@ -99,7 +98,7 @@ public class MarkdownTests {
                 
                 My important info
                 
-                ### Heading 3
+                ### Heading 3  {id="intro 3" class="title 3"}
                 
                 Even more important info
                 
@@ -133,8 +132,23 @@ public class MarkdownTests {
 		File markdownFile = new File("target/markdown.yaml").getCanonicalFile();
 		Resource markdownResource = resourceSet.createResource(URI.createFileURI(markdownFile.getAbsolutePath()));
 		markdownResource.getContents().add(ecoreDoc);
-		markdownResource.save(null);
+		markdownResource.save(null);		
+	}
+	
+	@Test
+	public void testMarkdownRsource() throws Exception {
+		CapabilityLoader capabilityLoader = new CapabilityLoader();
+		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
+		Requirement<ResourceSetRequirement, ResourceSet> requirement = ServiceCapabilityFactory.createRequirement(ResourceSet.class);		
+		ResourceSet resourceSet = capabilityLoader.loadOne(requirement, progressMonitor);
+        
+		File markdownFile = new File("src/test/resources/product-domain.md").getCanonicalFile();
+		Resource markdownResource = resourceSet.getResource(URI.createFileURI(markdownFile.getAbsolutePath()), true);		
+		Document document = (Document) markdownResource.getContents().get(0);
+		
+		System.out.println("Document content: " + document.getChars());
 		
 	}
+	
 
 }

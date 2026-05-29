@@ -71,7 +71,8 @@ class Attribute {
     /**
      * Raw attribute value string (may be empty for bare class/id short-hands).
      */
-    String    value
+    String value
+        
 }
 
 /**
@@ -82,6 +83,11 @@ interface Attributable {
      * All attributes parsed from the { ... } block that follows this node.
      */
     contains Attribute[] attributes
+    
+    int attributesStartOffset
+    
+    int attributesEndOffset
+    
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
