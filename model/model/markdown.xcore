@@ -117,14 +117,35 @@ class Heading extends Block {
  * A paragraph — one or more lines of inline content.
  */
 class Paragraph extends Block {
+    
+    // TODO
+//    getLineIndent(int)
+//getLineIndents()
+//getSegments()
+//hasTableSeparator()
+//isTrailingBlankLine()
 
 }
 
 /**
  * A fenced or indented code block.
  */
-class CodeBlock extends Block {
+class FencedCodeBlock extends Block {
     
+    String info
+    
+    String closingFence
+    
+    String closingMarker
+    
+    int fenceIndent
+    
+    int fenceLength
+    
+    String openingFence
+    
+    String openingMarker
+        
 }
 
 /**

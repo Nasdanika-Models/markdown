@@ -760,14 +760,14 @@ public interface MarkdownPackage extends EPackage {
 	int PARAGRAPH_OPERATION_COUNT = BLOCK_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.markdown.impl.CodeBlockImpl <em>Code Block</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.markdown.impl.FencedCodeBlockImpl <em>Fenced Code Block</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.markdown.impl.CodeBlockImpl
-	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getCodeBlock()
+	 * @see org.nasdanika.models.markdown.impl.FencedCodeBlockImpl
+	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getFencedCodeBlock()
 	 * @generated
 	 */
-	int CODE_BLOCK = 7;
+	int FENCED_CODE_BLOCK = 7;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -776,7 +776,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_BLOCK__START_OFFSET = BLOCK__START_OFFSET;
+	int FENCED_CODE_BLOCK__START_OFFSET = BLOCK__START_OFFSET;
 
 	/**
 	 * The feature id for the '<em><b>Start Line Number</b></em>' attribute.
@@ -785,7 +785,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_BLOCK__START_LINE_NUMBER = BLOCK__START_LINE_NUMBER;
+	int FENCED_CODE_BLOCK__START_LINE_NUMBER = BLOCK__START_LINE_NUMBER;
 
 	/**
 	 * The feature id for the '<em><b>End Offset</b></em>' attribute.
@@ -794,7 +794,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_BLOCK__END_OFFSET = BLOCK__END_OFFSET;
+	int FENCED_CODE_BLOCK__END_OFFSET = BLOCK__END_OFFSET;
 
 	/**
 	 * The feature id for the '<em><b>End Line Number</b></em>' attribute.
@@ -803,7 +803,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_BLOCK__END_LINE_NUMBER = BLOCK__END_LINE_NUMBER;
+	int FENCED_CODE_BLOCK__END_LINE_NUMBER = BLOCK__END_LINE_NUMBER;
 
 	/**
 	 * The feature id for the '<em><b>Chars</b></em>' attribute.
@@ -812,7 +812,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_BLOCK__CHARS = BLOCK__CHARS;
+	int FENCED_CODE_BLOCK__CHARS = BLOCK__CHARS;
 
 	/**
 	 * The feature id for the '<em><b>Content</b></em>' attribute.
@@ -821,7 +821,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_BLOCK__CONTENT = BLOCK__CONTENT;
+	int FENCED_CODE_BLOCK__CONTENT = BLOCK__CONTENT;
 
 	/**
 	 * The feature id for the '<em><b>Content End Offset</b></em>' attribute.
@@ -830,7 +830,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_BLOCK__CONTENT_END_OFFSET = BLOCK__CONTENT_END_OFFSET;
+	int FENCED_CODE_BLOCK__CONTENT_END_OFFSET = BLOCK__CONTENT_END_OFFSET;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -839,7 +839,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_BLOCK__CHILDREN = BLOCK__CHILDREN;
+	int FENCED_CODE_BLOCK__CHILDREN = BLOCK__CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -848,7 +848,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_BLOCK__ATTRIBUTES = BLOCK__ATTRIBUTES;
+	int FENCED_CODE_BLOCK__ATTRIBUTES = BLOCK__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Attributes Start Offset</b></em>' attribute.
@@ -857,7 +857,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_BLOCK__ATTRIBUTES_START_OFFSET = BLOCK__ATTRIBUTES_START_OFFSET;
+	int FENCED_CODE_BLOCK__ATTRIBUTES_START_OFFSET = BLOCK__ATTRIBUTES_START_OFFSET;
 
 	/**
 	 * The feature id for the '<em><b>Attributes End Offset</b></em>' attribute.
@@ -866,25 +866,88 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_BLOCK__ATTRIBUTES_END_OFFSET = BLOCK__ATTRIBUTES_END_OFFSET;
+	int FENCED_CODE_BLOCK__ATTRIBUTES_END_OFFSET = BLOCK__ATTRIBUTES_END_OFFSET;
 
 	/**
-	 * The number of structural features of the '<em>Code Block</em>' class.
+	 * The feature id for the '<em><b>Info</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_BLOCK_FEATURE_COUNT = BLOCK_FEATURE_COUNT + 0;
+	int FENCED_CODE_BLOCK__INFO = BLOCK_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Code Block</em>' class.
+	 * The feature id for the '<em><b>Closing Fence</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_BLOCK_OPERATION_COUNT = BLOCK_OPERATION_COUNT + 0;
+	int FENCED_CODE_BLOCK__CLOSING_FENCE = BLOCK_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Closing Marker</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_CODE_BLOCK__CLOSING_MARKER = BLOCK_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Fence Indent</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_CODE_BLOCK__FENCE_INDENT = BLOCK_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Fence Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_CODE_BLOCK__FENCE_LENGTH = BLOCK_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Opening Fence</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_CODE_BLOCK__OPENING_FENCE = BLOCK_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Opening Marker</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_CODE_BLOCK__OPENING_MARKER = BLOCK_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of structural features of the '<em>Fenced Code Block</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_CODE_BLOCK_FEATURE_COUNT = BLOCK_FEATURE_COUNT + 7;
+
+	/**
+	 * The number of operations of the '<em>Fenced Code Block</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_CODE_BLOCK_OPERATION_COUNT = BLOCK_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.markdown.impl.DocumentImpl <em>Document</em>}' class.
@@ -1269,14 +1332,91 @@ public interface MarkdownPackage extends EPackage {
 	EClass getParagraph();
 
 	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.markdown.CodeBlock <em>Code Block</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.markdown.FencedCodeBlock <em>Fenced Code Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Code Block</em>'.
-	 * @see org.nasdanika.models.markdown.CodeBlock
+	 * @return the meta object for class '<em>Fenced Code Block</em>'.
+	 * @see org.nasdanika.models.markdown.FencedCodeBlock
 	 * @generated
 	 */
-	EClass getCodeBlock();
+	EClass getFencedCodeBlock();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.FencedCodeBlock#getInfo <em>Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Info</em>'.
+	 * @see org.nasdanika.models.markdown.FencedCodeBlock#getInfo()
+	 * @see #getFencedCodeBlock()
+	 * @generated
+	 */
+	EAttribute getFencedCodeBlock_Info();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.FencedCodeBlock#getClosingFence <em>Closing Fence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Closing Fence</em>'.
+	 * @see org.nasdanika.models.markdown.FencedCodeBlock#getClosingFence()
+	 * @see #getFencedCodeBlock()
+	 * @generated
+	 */
+	EAttribute getFencedCodeBlock_ClosingFence();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.FencedCodeBlock#getClosingMarker <em>Closing Marker</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Closing Marker</em>'.
+	 * @see org.nasdanika.models.markdown.FencedCodeBlock#getClosingMarker()
+	 * @see #getFencedCodeBlock()
+	 * @generated
+	 */
+	EAttribute getFencedCodeBlock_ClosingMarker();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.FencedCodeBlock#getFenceIndent <em>Fence Indent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fence Indent</em>'.
+	 * @see org.nasdanika.models.markdown.FencedCodeBlock#getFenceIndent()
+	 * @see #getFencedCodeBlock()
+	 * @generated
+	 */
+	EAttribute getFencedCodeBlock_FenceIndent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.FencedCodeBlock#getFenceLength <em>Fence Length</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fence Length</em>'.
+	 * @see org.nasdanika.models.markdown.FencedCodeBlock#getFenceLength()
+	 * @see #getFencedCodeBlock()
+	 * @generated
+	 */
+	EAttribute getFencedCodeBlock_FenceLength();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.FencedCodeBlock#getOpeningFence <em>Opening Fence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Opening Fence</em>'.
+	 * @see org.nasdanika.models.markdown.FencedCodeBlock#getOpeningFence()
+	 * @see #getFencedCodeBlock()
+	 * @generated
+	 */
+	EAttribute getFencedCodeBlock_OpeningFence();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.FencedCodeBlock#getOpeningMarker <em>Opening Marker</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Opening Marker</em>'.
+	 * @see org.nasdanika.models.markdown.FencedCodeBlock#getOpeningMarker()
+	 * @see #getFencedCodeBlock()
+	 * @generated
+	 */
+	EAttribute getFencedCodeBlock_OpeningMarker();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.markdown.Document <em>Document</em>}'.
@@ -1523,14 +1663,70 @@ public interface MarkdownPackage extends EPackage {
 		EClass PARAGRAPH = eINSTANCE.getParagraph();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.markdown.impl.CodeBlockImpl <em>Code Block</em>}' class.
+		 * The meta object literal for the '{@link org.nasdanika.models.markdown.impl.FencedCodeBlockImpl <em>Fenced Code Block</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.markdown.impl.CodeBlockImpl
-		 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getCodeBlock()
+		 * @see org.nasdanika.models.markdown.impl.FencedCodeBlockImpl
+		 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getFencedCodeBlock()
 		 * @generated
 		 */
-		EClass CODE_BLOCK = eINSTANCE.getCodeBlock();
+		EClass FENCED_CODE_BLOCK = eINSTANCE.getFencedCodeBlock();
+
+		/**
+		 * The meta object literal for the '<em><b>Info</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FENCED_CODE_BLOCK__INFO = eINSTANCE.getFencedCodeBlock_Info();
+
+		/**
+		 * The meta object literal for the '<em><b>Closing Fence</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FENCED_CODE_BLOCK__CLOSING_FENCE = eINSTANCE.getFencedCodeBlock_ClosingFence();
+
+		/**
+		 * The meta object literal for the '<em><b>Closing Marker</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FENCED_CODE_BLOCK__CLOSING_MARKER = eINSTANCE.getFencedCodeBlock_ClosingMarker();
+
+		/**
+		 * The meta object literal for the '<em><b>Fence Indent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FENCED_CODE_BLOCK__FENCE_INDENT = eINSTANCE.getFencedCodeBlock_FenceIndent();
+
+		/**
+		 * The meta object literal for the '<em><b>Fence Length</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FENCED_CODE_BLOCK__FENCE_LENGTH = eINSTANCE.getFencedCodeBlock_FenceLength();
+
+		/**
+		 * The meta object literal for the '<em><b>Opening Fence</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FENCED_CODE_BLOCK__OPENING_FENCE = eINSTANCE.getFencedCodeBlock_OpeningFence();
+
+		/**
+		 * The meta object literal for the '<em><b>Opening Marker</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FENCED_CODE_BLOCK__OPENING_MARKER = eINSTANCE.getFencedCodeBlock_OpeningMarker();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.markdown.impl.DocumentImpl <em>Document</em>}' class.

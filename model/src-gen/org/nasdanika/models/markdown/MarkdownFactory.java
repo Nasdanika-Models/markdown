@@ -67,13 +67,13 @@ public interface MarkdownFactory extends EFactory {
 	Paragraph createParagraph();
 
 	/**
-	 * Returns a new object of class '<em>Code Block</em>'.
+	 * Returns a new object of class '<em>Fenced Code Block</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Code Block</em>'.
+	 * @return a new object of class '<em>Fenced Code Block</em>'.
 	 * @generated
 	 */
-	CodeBlock createCodeBlock();
+	FencedCodeBlock createFencedCodeBlock();
 
 	/**
 	 * Returns a new object of class '<em>Document</em>'.

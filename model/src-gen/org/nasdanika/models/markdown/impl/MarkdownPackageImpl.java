@@ -14,9 +14,9 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.nasdanika.models.markdown.Attributable;
 import org.nasdanika.models.markdown.Attribute;
 import org.nasdanika.models.markdown.Block;
-import org.nasdanika.models.markdown.CodeBlock;
 import org.nasdanika.models.markdown.ContentNode;
 import org.nasdanika.models.markdown.Document;
+import org.nasdanika.models.markdown.FencedCodeBlock;
 import org.nasdanika.models.markdown.Heading;
 import org.nasdanika.models.markdown.HeadingLevel;
 import org.nasdanika.models.markdown.MarkdownFactory;
@@ -85,7 +85,7 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass codeBlockEClass = null;
+	private EClass fencedCodeBlockEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -390,8 +390,78 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getCodeBlock() {
-		return codeBlockEClass;
+	public EClass getFencedCodeBlock() {
+		return fencedCodeBlockEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFencedCodeBlock_Info() {
+		return (EAttribute)fencedCodeBlockEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFencedCodeBlock_ClosingFence() {
+		return (EAttribute)fencedCodeBlockEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFencedCodeBlock_ClosingMarker() {
+		return (EAttribute)fencedCodeBlockEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFencedCodeBlock_FenceIndent() {
+		return (EAttribute)fencedCodeBlockEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFencedCodeBlock_FenceLength() {
+		return (EAttribute)fencedCodeBlockEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFencedCodeBlock_OpeningFence() {
+		return (EAttribute)fencedCodeBlockEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFencedCodeBlock_OpeningMarker() {
+		return (EAttribute)fencedCodeBlockEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -482,7 +552,14 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 
 		paragraphEClass = createEClass(PARAGRAPH);
 
-		codeBlockEClass = createEClass(CODE_BLOCK);
+		fencedCodeBlockEClass = createEClass(FENCED_CODE_BLOCK);
+		createEAttribute(fencedCodeBlockEClass, FENCED_CODE_BLOCK__INFO);
+		createEAttribute(fencedCodeBlockEClass, FENCED_CODE_BLOCK__CLOSING_FENCE);
+		createEAttribute(fencedCodeBlockEClass, FENCED_CODE_BLOCK__CLOSING_MARKER);
+		createEAttribute(fencedCodeBlockEClass, FENCED_CODE_BLOCK__FENCE_INDENT);
+		createEAttribute(fencedCodeBlockEClass, FENCED_CODE_BLOCK__FENCE_LENGTH);
+		createEAttribute(fencedCodeBlockEClass, FENCED_CODE_BLOCK__OPENING_FENCE);
+		createEAttribute(fencedCodeBlockEClass, FENCED_CODE_BLOCK__OPENING_MARKER);
 
 		documentEClass = createEClass(DOCUMENT);
 		createEAttribute(documentEClass, DOCUMENT__SOURCE_URI);
@@ -527,7 +604,7 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 		blockEClass.getESuperTypes().add(this.getAttributable());
 		headingEClass.getESuperTypes().add(this.getBlock());
 		paragraphEClass.getESuperTypes().add(this.getBlock());
-		codeBlockEClass.getESuperTypes().add(this.getBlock());
+		fencedCodeBlockEClass.getESuperTypes().add(this.getBlock());
 		documentEClass.getESuperTypes().add(this.getBlock());
 
 		// Initialize classes, features, and operations; add parameters
@@ -560,7 +637,14 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 
 		initEClass(paragraphEClass, Paragraph.class, "Paragraph", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(codeBlockEClass, CodeBlock.class, "CodeBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(fencedCodeBlockEClass, FencedCodeBlock.class, "FencedCodeBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFencedCodeBlock_Info(), theEcorePackage.getEString(), "info", null, 0, 1, FencedCodeBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFencedCodeBlock_ClosingFence(), theEcorePackage.getEString(), "closingFence", null, 0, 1, FencedCodeBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFencedCodeBlock_ClosingMarker(), theEcorePackage.getEString(), "closingMarker", null, 0, 1, FencedCodeBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFencedCodeBlock_FenceIndent(), theEcorePackage.getEInt(), "fenceIndent", null, 0, 1, FencedCodeBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFencedCodeBlock_FenceLength(), theEcorePackage.getEInt(), "fenceLength", null, 0, 1, FencedCodeBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFencedCodeBlock_OpeningFence(), theEcorePackage.getEString(), "openingFence", null, 0, 1, FencedCodeBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFencedCodeBlock_OpeningMarker(), theEcorePackage.getEString(), "openingMarker", null, 0, 1, FencedCodeBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(documentEClass, Document.class, "Document", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDocument_SourceUri(), theEcorePackage.getEString(), "sourceUri", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -671,7 +755,7 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 			   "documentation", "*\nA paragraph \u2014 one or more lines of inline content."
 		   });
 		addAnnotation
-		  (codeBlockEClass,
+		  (fencedCodeBlockEClass,
 		   source,
 		   new String[] {
 			   "documentation", "*\nA fenced or indented code block."

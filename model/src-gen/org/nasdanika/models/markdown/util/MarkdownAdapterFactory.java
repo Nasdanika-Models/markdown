@@ -96,8 +96,8 @@ public class MarkdownAdapterFactory extends AdapterFactoryImpl {
 				return createParagraphAdapter();
 			}
 			@Override
-			public Adapter caseCodeBlock(CodeBlock object) {
-				return createCodeBlockAdapter();
+			public Adapter caseFencedCodeBlock(FencedCodeBlock object) {
+				return createFencedCodeBlockAdapter();
 			}
 			@Override
 			public Adapter caseDocument(Document object) {
@@ -222,16 +222,16 @@ public class MarkdownAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.CodeBlock <em>Code Block</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.FencedCodeBlock <em>Fenced Code Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.models.markdown.CodeBlock
+	 * @see org.nasdanika.models.markdown.FencedCodeBlock
 	 * @generated
 	 */
-	public Adapter createCodeBlockAdapter() {
+	public Adapter createFencedCodeBlockAdapter() {
 		return null;
 	}
 

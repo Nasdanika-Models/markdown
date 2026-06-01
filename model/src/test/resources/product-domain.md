@@ -13,10 +13,12 @@ A leader responsible for portfolio outcomes...
 
 #### Configuration
 
-```yaml type=persona-config
+```yaml {type=persona-config}
 authority: org.nasdanika
 evidence:
   - source: 2024-portfolio-review.pdf
     confidence: high
 ```
+
+So be it! {so="be it"}
 

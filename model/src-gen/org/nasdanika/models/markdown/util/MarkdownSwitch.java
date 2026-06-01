@@ -120,13 +120,13 @@ public class MarkdownSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case MarkdownPackage.CODE_BLOCK: {
-				CodeBlock codeBlock = (CodeBlock)theEObject;
-				T result = caseCodeBlock(codeBlock);
-				if (result == null) result = caseBlock(codeBlock);
-				if (result == null) result = caseContentNode(codeBlock);
-				if (result == null) result = caseAttributable(codeBlock);
-				if (result == null) result = caseNode(codeBlock);
+			case MarkdownPackage.FENCED_CODE_BLOCK: {
+				FencedCodeBlock fencedCodeBlock = (FencedCodeBlock)theEObject;
+				T result = caseFencedCodeBlock(fencedCodeBlock);
+				if (result == null) result = caseBlock(fencedCodeBlock);
+				if (result == null) result = caseContentNode(fencedCodeBlock);
+				if (result == null) result = caseAttributable(fencedCodeBlock);
+				if (result == null) result = caseNode(fencedCodeBlock);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -250,17 +250,17 @@ public class MarkdownSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Code Block</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Fenced Code Block</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Code Block</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Fenced Code Block</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCodeBlock(CodeBlock object) {
+	public T caseFencedCodeBlock(FencedCodeBlock object) {
 		return null;
 	}
 

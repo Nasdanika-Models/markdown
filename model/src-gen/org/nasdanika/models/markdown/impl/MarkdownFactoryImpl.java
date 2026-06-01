@@ -62,7 +62,7 @@ public class MarkdownFactoryImpl extends EFactoryImpl implements MarkdownFactory
 			case MarkdownPackage.ATTRIBUTE: return createAttribute();
 			case MarkdownPackage.HEADING: return createHeading();
 			case MarkdownPackage.PARAGRAPH: return createParagraph();
-			case MarkdownPackage.CODE_BLOCK: return createCodeBlock();
+			case MarkdownPackage.FENCED_CODE_BLOCK: return createFencedCodeBlock();
 			case MarkdownPackage.DOCUMENT: return createDocument();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -160,9 +160,9 @@ public class MarkdownFactoryImpl extends EFactoryImpl implements MarkdownFactory
 	 * @generated
 	 */
 	@Override
-	public CodeBlock createCodeBlock() {
-		CodeBlockImpl codeBlock = new CodeBlockImpl();
-		return codeBlock;
+	public FencedCodeBlock createFencedCodeBlock() {
+		FencedCodeBlockImpl fencedCodeBlock = new FencedCodeBlockImpl();
+		return fencedCodeBlock;
 	}
 
 	/**

@@ -6,7 +6,9 @@ import java.util.Map;
 import org.nasdanika.models.markdown.Attributable;
 import org.nasdanika.models.markdown.MarkdownFactory;
 
+import com.vladsch.flexmark.ast.FencedCodeBlock;
 import com.vladsch.flexmark.ast.Heading;
+import com.vladsch.flexmark.ast.Paragraph;
 import com.vladsch.flexmark.ext.attributes.AttributeNode;
 import com.vladsch.flexmark.ext.attributes.AttributesNode;
 import com.vladsch.flexmark.util.ast.ContentNode;
@@ -31,9 +33,9 @@ public class MarkdownVisitor {
     // ── visitor wiring ────────────────────────────────────────────────────────
     private final NodeVisitor visitor = new NodeVisitor(
         new VisitHandler<>(Heading.class, this::visitHeading),
-//        new VisitHandler<>(Paragraph.class, this::visitParagraph),
+        new VisitHandler<>(Paragraph.class, this::visitParagraph),
 //        new VisitHandler<>(BulletListItem.class, this::visitListItem),
-//        new VisitHandler<>(FencedCodeBlock.class, this::visitCode),
+        new VisitHandler<>(FencedCodeBlock.class, this::visitCode),
         new VisitHandler<>(AttributesNode.class, this::visitAttributes)
     );
 
@@ -98,15 +100,23 @@ public class MarkdownVisitor {
 		return MarkdownFactory.eINSTANCE;
 	}
 
-//    private void visitParagraph(Paragraph node) {
-//    	org.nasdanika.models.markdown.Paragraph para = getFactory().createParagraph();
-//        para.setText(node.getContentChars().toString().strip());
-//        root.getBlocks().add(para);
-//        currentBlock = para;
-//
-//        visitor.visitChildren(node);
-//    }
-//
+    private void visitParagraph(Paragraph node) {
+    	org.nasdanika.models.markdown.Paragraph para = getFactory().createParagraph();
+    	populateContentNode(node, para);
+        
+        // TODO
+//        getLineIndent(int)
+//        getLineIndents()
+//        getSegments()
+//        hasTableSeparator()
+//        isTrailingBlankLine()
+        
+        currentContainerBlock.getChildren().add(para);
+        nodeMap.put(node, para);
+
+        visitor.visitChildren(node);
+    }
+
 //    private void visitListItem(BulletListItem node) {
 //    	org.nasdanika.models.markdown.ListItem item = getFactory().createListItem();
 //        item.setText(node.getFirstChild() == null
@@ -116,16 +126,24 @@ public class MarkdownVisitor {
 //
 //        visitor.visitChildren(node);
 //    }
-//
-//    private void visitCode(FencedCodeBlock node) {
-//    	org.nasdanika.models.markdown.CodeBlock code = getFactory().createCodeBlock();
-//        code.setLanguage(node.getInfo().toString());
-//        code.setContent(node.getContentChars().toString());
-//        root.getBlocks().add(code);
-//        currentBlock = code;
-//
-//        visitor.visitChildren(node);
-//    }
+
+    private void visitCode(FencedCodeBlock node) {
+    	org.nasdanika.models.markdown.FencedCodeBlock code = getFactory().createFencedCodeBlock();
+    	populateContentNode(node, code);
+        code.setInfo(node.getInfo().toString());
+        code.setContent(node.getContentChars().toString());
+        code.setClosingFence(node.getClosingFence().toString());
+        code.setClosingMarker(node.getClosingMarker().toString());
+        code.setFenceIndent(node.getFenceIndent());
+        code.setFenceLength(node.getFenceLength());
+        code.setOpeningFence(node.getOpeningFence().toString());
+        code.setOpeningMarker(node.getOpeningMarker().toString());
+        
+        currentContainerBlock.getChildren().add(code);
+        nodeMap.put(node, code);
+
+        visitor.visitChildren(node);
+    }
 
     /**
      * Called for every { attr="value" } block.
