@@ -166,6 +166,7 @@
 
 	<modules>
 		<module>model</module>
+		<module>filters</module>
 	</modules>
 
 	 <profiles>

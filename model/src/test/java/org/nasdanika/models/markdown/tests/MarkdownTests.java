@@ -136,7 +136,7 @@ public class MarkdownTests {
 	}
 	
 	@Test
-	public void testMarkdownRsource() throws Exception {
+	public void testMarkdownResource() throws Exception {
 		CapabilityLoader capabilityLoader = new CapabilityLoader();
 		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
 		Requirement<ResourceSetRequirement, ResourceSet> requirement = ServiceCapabilityFactory.createRequirement(ResourceSet.class);		

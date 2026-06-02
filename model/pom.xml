@@ -10,7 +10,7 @@
     </parent>
     <artifactId>model</artifactId>
     <packaging>jar</packaging>
-    <name>Ecore Product Management Model</name>
+    <name>Ecore Markdown Model</name>
 
     <build>
         <plugins>
