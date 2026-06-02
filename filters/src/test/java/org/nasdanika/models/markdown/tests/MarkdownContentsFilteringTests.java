@@ -6,6 +6,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.junit.jupiter.api.Test;
 import org.nasdanika.capability.CapabilityLoader;
 import org.nasdanika.capability.ServiceCapabilityFactory;
@@ -27,8 +28,10 @@ public class MarkdownContentsFilteringTests {
 		Resource markdownResource = resourceSet.getResource(URI.createFileURI(markdownFile.getAbsolutePath()), true);		
 		EPackage ePackage = (EPackage) markdownResource.getContents().get(0);
 		
-		System.out.println("EPackage: " + ePackage);
-		
+		File ecoreFile = new File("target/family.ecore").getCanonicalFile();
+		Resource ecoreResource = resourceSet.createResource(URI.createFileURI(ecoreFile.getAbsolutePath()));
+		ecoreResource.getContents().add(EcoreUtil.copy(ePackage));
+		ecoreResource.save(null);
 	}
 	
 

@@ -10,13 +10,13 @@ The model was created to mimic the model from [Eclipse Sirius Basic Family](http
 
 ## Named Element
 
-## Attributes
+### Attributes
 
-### Name
+#### Name
 
 Named element name. 
 
-## Family {extends="Named Element"}
+## Family {superTypes="Named Element"}
 
 Family (from Latin: familia) is a group of people related either by consanguinity (by recognized birth) or affinity (by marriage or other relationship).
 It forms the basis for social order.
@@ -34,7 +34,7 @@ The word “families” can be used metaphorically to create more inclusive cate
 
 #### Members {type="Person" multiplicity="2..*"}
 
-## Person {extends="Named Element"}
+## Person {superTypes="Named Element"}
 
 A person (pl.: people or persons, depending on context) is a being who has certain capacities or attributes such as reason, morality, consciousness or self-consciousness, and being a part of a culturally established form of social relations such as kinship, ownership of property, or legal responsibility.
 The defining features of personhood and, consequently, what makes a person count as a person, differ widely among cultures and contexts.
@@ -55,10 +55,10 @@ The plural form “people” is often used to refer to an entire nation or ethni
 
 #### Mother {type="Woman" multiplicity="0..1"}
 
-#### Children {type="person" multiplicity="*" opposite="Parents"}
+#### Children {type="Person" multiplicity="*" opposite="Parents"}
 
 
-## Man {extends="Person"}
+## Man {superTypes="Person"}
 
 A man is an adult male human. Prior to adulthood, a male human is referred to as a boy (a male child or adolescent).
 
@@ -71,7 +71,7 @@ The Old English word for “man” as distinct from “woman” or “child” w
 Mann only came to mean “man” in Middle English, replacing wer, which survives today only in the compounds “werewolf” (from Old English werwulf, literally “man-wolf”), and “wergild”, literally “man-payment”.
 
 
-## Woman {extends="Person"}
+## Woman {superTypes="Person"}
 
 A woman is an adult female human. Prior to adulthood, one is referred to as a girl (a female child or adolescent).
 
