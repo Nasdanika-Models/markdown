@@ -17,6 +17,7 @@ import org.nasdanika.models.markdown.MarkdownFactory;
 import org.nasdanika.models.markdown.loader.MarkdownVisitor;
 
 import com.vladsch.flexmark.ext.attributes.AttributesExtension;
+import com.vladsch.flexmark.ext.tables.TablesExtension;
 import com.vladsch.flexmark.parser.Parser;
 import com.vladsch.flexmark.util.data.MutableDataSet;
 
@@ -31,7 +32,7 @@ public class MarkdownResource extends ContentsFilteringResource {
 	protected List<EObject> loadContents(InputStream inputStream, Map<?, ?> options) throws IOException {
 		try (Reader reader = new InputStreamReader(inputStream)) {
 	        MutableDataSet parserOptions = new MutableDataSet();
-	        parserOptions.set(Parser.EXTENSIONS, List.of(AttributesExtension.create()));
+	        parserOptions.set(Parser.EXTENSIONS, List.of(AttributesExtension.create(), TablesExtension.create()));
 
 	        Parser parser = Parser.builder(parserOptions).build();
 

@@ -14,15 +14,37 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.nasdanika.models.markdown.Attributable;
 import org.nasdanika.models.markdown.Attribute;
 import org.nasdanika.models.markdown.Block;
+import org.nasdanika.models.markdown.BulletList;
+import org.nasdanika.models.markdown.BulletListItem;
 import org.nasdanika.models.markdown.ContentNode;
+import org.nasdanika.models.markdown.DefinitionItem;
+import org.nasdanika.models.markdown.DefinitionList;
+import org.nasdanika.models.markdown.DefinitionTerm;
 import org.nasdanika.models.markdown.Document;
 import org.nasdanika.models.markdown.FencedCodeBlock;
 import org.nasdanika.models.markdown.Heading;
 import org.nasdanika.models.markdown.HeadingLevel;
+import org.nasdanika.models.markdown.InlineLinkNode;
+import org.nasdanika.models.markdown.Link;
+import org.nasdanika.models.markdown.LinkNode;
+import org.nasdanika.models.markdown.LinkNodeBase;
+import org.nasdanika.models.markdown.ListBlock;
+import org.nasdanika.models.markdown.ListItem;
 import org.nasdanika.models.markdown.MarkdownFactory;
 import org.nasdanika.models.markdown.MarkdownPackage;
 import org.nasdanika.models.markdown.Node;
+import org.nasdanika.models.markdown.OrderedList;
+import org.nasdanika.models.markdown.OrderedListItem;
 import org.nasdanika.models.markdown.Paragraph;
+import org.nasdanika.models.markdown.TableBlock;
+import org.nasdanika.models.markdown.TableBody;
+import org.nasdanika.models.markdown.TableCaption;
+import org.nasdanika.models.markdown.TableCell;
+import org.nasdanika.models.markdown.TableCellAlignment;
+import org.nasdanika.models.markdown.TableHead;
+import org.nasdanika.models.markdown.TableRow;
+import org.nasdanika.models.markdown.TableSeparator;
+import org.nasdanika.models.markdown.TaskListItem;
 
 /**
  * <!-- begin-user-doc -->
@@ -92,6 +114,153 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass listBlockEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orderedListEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass bulletListEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass definitionListEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass listItemEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass bulletListItemEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass definitionItemEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass definitionTermEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass orderedListItemEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass taskListItemEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass linkNodeBaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass linkNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inlineLinkNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass linkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tableBlockEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tableBodyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tableCaptionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tableCellEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tableHeadEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tableRowEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass tableSeparatorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass documentEClass = null;
 
 	/**
@@ -100,6 +269,13 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 	 * @generated
 	 */
 	private EEnum headingLevelEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum tableCellAlignmentEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -470,6 +646,466 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 	 * @generated
 	 */
 	@Override
+	public EClass getListBlock() {
+		return listBlockEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getListBlock_Tight() {
+		return (EAttribute)listBlockEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getOrderedList() {
+		return orderedListEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOrderedList_StartNumber() {
+		return (EAttribute)orderedListEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getOrderedList_Delimiter() {
+		return (EAttribute)orderedListEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getBulletList() {
+		return bulletListEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getBulletList_OpeningMarker() {
+		return (EAttribute)bulletListEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDefinitionList() {
+		return definitionListEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getListItem() {
+		return listItemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getBulletListItem() {
+		return bulletListItemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDefinitionItem() {
+		return definitionItemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDefinitionTerm() {
+		return definitionTermEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getOrderedListItem() {
+		return orderedListItemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTaskListItem() {
+		return taskListItemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLinkNodeBase() {
+		return linkNodeBaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLinkNodeBase_AnchorMarker() {
+		return (EAttribute)linkNodeBaseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLinkNodeBase_AnchorRef() {
+		return (EAttribute)linkNodeBaseEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLinkNodeBase_PageRef() {
+		return (EAttribute)linkNodeBaseEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLinkNodeBase_Title() {
+		return (EAttribute)linkNodeBaseEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLinkNodeBase_TitleClosingMarker() {
+		return (EAttribute)linkNodeBaseEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLinkNodeBase_TitleOpeningMarker() {
+		return (EAttribute)linkNodeBaseEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLinkNodeBase_Url() {
+		return (EAttribute)linkNodeBaseEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLinkNodeBase_UrlClosingMarker() {
+		return (EAttribute)linkNodeBaseEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLinkNodeBase_UrlOpeningMarker() {
+		return (EAttribute)linkNodeBaseEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLinkNode() {
+		return linkNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getInlineLinkNode() {
+		return inlineLinkNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getInlineLinkNode_LinkClosingMarker() {
+		return (EAttribute)inlineLinkNodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getInlineLinkNode_LinkOpeningMarker() {
+		return (EAttribute)inlineLinkNodeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getInlineLinkNode_Text() {
+		return (EAttribute)inlineLinkNodeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getInlineLinkNode_TextClosingMarker() {
+		return (EAttribute)inlineLinkNodeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getInlineLinkNode_TextOpeningMarker() {
+		return (EAttribute)inlineLinkNodeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLink() {
+		return linkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTableBlock() {
+		return tableBlockEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTableBody() {
+		return tableBodyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTableCaption() {
+		return tableCaptionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTableCaption_OpeningMarker() {
+		return (EAttribute)tableCaptionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTableCaption_Text() {
+		return (EAttribute)tableCaptionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTableCaption_ClosingMarker() {
+		return (EAttribute)tableCaptionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTableCell() {
+		return tableCellEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTableCell_OpeningMarker() {
+		return (EAttribute)tableCellEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTableCell_Text() {
+		return (EAttribute)tableCellEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTableCell_ClosingMarker() {
+		return (EAttribute)tableCellEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTableCell_Alignment() {
+		return (EAttribute)tableCellEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTableHead() {
+		return tableHeadEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTableRow() {
+		return tableRowEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTableSeparator() {
+		return tableSeparatorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getDocument() {
 		return documentEClass;
 	}
@@ -492,6 +1128,16 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 	@Override
 	public EEnum getHeadingLevel() {
 		return headingLevelEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getTableCellAlignment() {
+		return tableCellAlignmentEEnum;
 	}
 
 	/**
@@ -561,11 +1207,79 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 		createEAttribute(fencedCodeBlockEClass, FENCED_CODE_BLOCK__OPENING_FENCE);
 		createEAttribute(fencedCodeBlockEClass, FENCED_CODE_BLOCK__OPENING_MARKER);
 
+		listBlockEClass = createEClass(LIST_BLOCK);
+		createEAttribute(listBlockEClass, LIST_BLOCK__TIGHT);
+
+		orderedListEClass = createEClass(ORDERED_LIST);
+		createEAttribute(orderedListEClass, ORDERED_LIST__START_NUMBER);
+		createEAttribute(orderedListEClass, ORDERED_LIST__DELIMITER);
+
+		bulletListEClass = createEClass(BULLET_LIST);
+		createEAttribute(bulletListEClass, BULLET_LIST__OPENING_MARKER);
+
+		definitionListEClass = createEClass(DEFINITION_LIST);
+
+		listItemEClass = createEClass(LIST_ITEM);
+
+		bulletListItemEClass = createEClass(BULLET_LIST_ITEM);
+
+		definitionItemEClass = createEClass(DEFINITION_ITEM);
+
+		definitionTermEClass = createEClass(DEFINITION_TERM);
+
+		orderedListItemEClass = createEClass(ORDERED_LIST_ITEM);
+
+		taskListItemEClass = createEClass(TASK_LIST_ITEM);
+
+		linkNodeBaseEClass = createEClass(LINK_NODE_BASE);
+		createEAttribute(linkNodeBaseEClass, LINK_NODE_BASE__ANCHOR_MARKER);
+		createEAttribute(linkNodeBaseEClass, LINK_NODE_BASE__ANCHOR_REF);
+		createEAttribute(linkNodeBaseEClass, LINK_NODE_BASE__PAGE_REF);
+		createEAttribute(linkNodeBaseEClass, LINK_NODE_BASE__TITLE);
+		createEAttribute(linkNodeBaseEClass, LINK_NODE_BASE__TITLE_CLOSING_MARKER);
+		createEAttribute(linkNodeBaseEClass, LINK_NODE_BASE__TITLE_OPENING_MARKER);
+		createEAttribute(linkNodeBaseEClass, LINK_NODE_BASE__URL);
+		createEAttribute(linkNodeBaseEClass, LINK_NODE_BASE__URL_CLOSING_MARKER);
+		createEAttribute(linkNodeBaseEClass, LINK_NODE_BASE__URL_OPENING_MARKER);
+
+		linkNodeEClass = createEClass(LINK_NODE);
+
+		inlineLinkNodeEClass = createEClass(INLINE_LINK_NODE);
+		createEAttribute(inlineLinkNodeEClass, INLINE_LINK_NODE__LINK_CLOSING_MARKER);
+		createEAttribute(inlineLinkNodeEClass, INLINE_LINK_NODE__LINK_OPENING_MARKER);
+		createEAttribute(inlineLinkNodeEClass, INLINE_LINK_NODE__TEXT);
+		createEAttribute(inlineLinkNodeEClass, INLINE_LINK_NODE__TEXT_CLOSING_MARKER);
+		createEAttribute(inlineLinkNodeEClass, INLINE_LINK_NODE__TEXT_OPENING_MARKER);
+
+		linkEClass = createEClass(LINK);
+
+		tableBlockEClass = createEClass(TABLE_BLOCK);
+
+		tableBodyEClass = createEClass(TABLE_BODY);
+
+		tableCaptionEClass = createEClass(TABLE_CAPTION);
+		createEAttribute(tableCaptionEClass, TABLE_CAPTION__OPENING_MARKER);
+		createEAttribute(tableCaptionEClass, TABLE_CAPTION__TEXT);
+		createEAttribute(tableCaptionEClass, TABLE_CAPTION__CLOSING_MARKER);
+
+		tableCellEClass = createEClass(TABLE_CELL);
+		createEAttribute(tableCellEClass, TABLE_CELL__OPENING_MARKER);
+		createEAttribute(tableCellEClass, TABLE_CELL__TEXT);
+		createEAttribute(tableCellEClass, TABLE_CELL__CLOSING_MARKER);
+		createEAttribute(tableCellEClass, TABLE_CELL__ALIGNMENT);
+
+		tableHeadEClass = createEClass(TABLE_HEAD);
+
+		tableRowEClass = createEClass(TABLE_ROW);
+
+		tableSeparatorEClass = createEClass(TABLE_SEPARATOR);
+
 		documentEClass = createEClass(DOCUMENT);
 		createEAttribute(documentEClass, DOCUMENT__SOURCE_URI);
 
 		// Create enums
 		headingLevelEEnum = createEEnum(HEADING_LEVEL);
+		tableCellAlignmentEEnum = createEEnum(TABLE_CELL_ALIGNMENT);
 	}
 
 	/**
@@ -605,6 +1319,27 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 		headingEClass.getESuperTypes().add(this.getBlock());
 		paragraphEClass.getESuperTypes().add(this.getBlock());
 		fencedCodeBlockEClass.getESuperTypes().add(this.getBlock());
+		listBlockEClass.getESuperTypes().add(this.getBlock());
+		orderedListEClass.getESuperTypes().add(this.getListBlock());
+		bulletListEClass.getESuperTypes().add(this.getListBlock());
+		definitionListEClass.getESuperTypes().add(this.getListBlock());
+		listItemEClass.getESuperTypes().add(this.getBlock());
+		bulletListItemEClass.getESuperTypes().add(this.getListItem());
+		definitionItemEClass.getESuperTypes().add(this.getListItem());
+		definitionTermEClass.getESuperTypes().add(this.getListItem());
+		orderedListItemEClass.getESuperTypes().add(this.getListItem());
+		taskListItemEClass.getESuperTypes().add(this.getListItem());
+		linkNodeBaseEClass.getESuperTypes().add(this.getNode());
+		linkNodeEClass.getESuperTypes().add(this.getLinkNodeBase());
+		inlineLinkNodeEClass.getESuperTypes().add(this.getLinkNode());
+		linkEClass.getESuperTypes().add(this.getInlineLinkNode());
+		tableBlockEClass.getESuperTypes().add(this.getBlock());
+		tableBodyEClass.getESuperTypes().add(this.getNode());
+		tableCaptionEClass.getESuperTypes().add(this.getNode());
+		tableCellEClass.getESuperTypes().add(this.getNode());
+		tableHeadEClass.getESuperTypes().add(this.getNode());
+		tableRowEClass.getESuperTypes().add(this.getNode());
+		tableSeparatorEClass.getESuperTypes().add(this.getNode());
 		documentEClass.getESuperTypes().add(this.getBlock());
 
 		// Initialize classes, features, and operations; add parameters
@@ -646,6 +1381,73 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 		initEAttribute(getFencedCodeBlock_OpeningFence(), theEcorePackage.getEString(), "openingFence", null, 0, 1, FencedCodeBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFencedCodeBlock_OpeningMarker(), theEcorePackage.getEString(), "openingMarker", null, 0, 1, FencedCodeBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(listBlockEClass, ListBlock.class, "ListBlock", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getListBlock_Tight(), theEcorePackage.getEBoolean(), "tight", null, 0, 1, ListBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(orderedListEClass, OrderedList.class, "OrderedList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOrderedList_StartNumber(), theEcorePackage.getEInt(), "startNumber", null, 0, 1, OrderedList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOrderedList_Delimiter(), theEcorePackage.getEString(), "delimiter", null, 0, 1, OrderedList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(bulletListEClass, BulletList.class, "BulletList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBulletList_OpeningMarker(), theEcorePackage.getEString(), "openingMarker", null, 0, 1, BulletList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(definitionListEClass, DefinitionList.class, "DefinitionList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(listItemEClass, ListItem.class, "ListItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(bulletListItemEClass, BulletListItem.class, "BulletListItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(definitionItemEClass, DefinitionItem.class, "DefinitionItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(definitionTermEClass, DefinitionTerm.class, "DefinitionTerm", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(orderedListItemEClass, OrderedListItem.class, "OrderedListItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(taskListItemEClass, TaskListItem.class, "TaskListItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(linkNodeBaseEClass, LinkNodeBase.class, "LinkNodeBase", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLinkNodeBase_AnchorMarker(), theEcorePackage.getEString(), "anchorMarker", null, 0, 1, LinkNodeBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLinkNodeBase_AnchorRef(), theEcorePackage.getEString(), "anchorRef", null, 0, 1, LinkNodeBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLinkNodeBase_PageRef(), theEcorePackage.getEString(), "pageRef", null, 0, 1, LinkNodeBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLinkNodeBase_Title(), theEcorePackage.getEString(), "title", null, 0, 1, LinkNodeBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLinkNodeBase_TitleClosingMarker(), theEcorePackage.getEString(), "titleClosingMarker", null, 0, 1, LinkNodeBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLinkNodeBase_TitleOpeningMarker(), theEcorePackage.getEString(), "titleOpeningMarker", null, 0, 1, LinkNodeBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLinkNodeBase_Url(), theEcorePackage.getEString(), "url", null, 0, 1, LinkNodeBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLinkNodeBase_UrlClosingMarker(), theEcorePackage.getEString(), "urlClosingMarker", null, 0, 1, LinkNodeBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLinkNodeBase_UrlOpeningMarker(), theEcorePackage.getEString(), "urlOpeningMarker", null, 0, 1, LinkNodeBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(linkNodeEClass, LinkNode.class, "LinkNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(inlineLinkNodeEClass, InlineLinkNode.class, "InlineLinkNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInlineLinkNode_LinkClosingMarker(), theEcorePackage.getEString(), "linkClosingMarker", null, 0, 1, InlineLinkNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInlineLinkNode_LinkOpeningMarker(), theEcorePackage.getEString(), "linkOpeningMarker", null, 0, 1, InlineLinkNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInlineLinkNode_Text(), theEcorePackage.getEString(), "text", null, 0, 1, InlineLinkNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInlineLinkNode_TextClosingMarker(), theEcorePackage.getEString(), "textClosingMarker", null, 0, 1, InlineLinkNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInlineLinkNode_TextOpeningMarker(), theEcorePackage.getEString(), "textOpeningMarker", null, 0, 1, InlineLinkNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(linkEClass, Link.class, "Link", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(tableBlockEClass, TableBlock.class, "TableBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(tableBodyEClass, TableBody.class, "TableBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(tableCaptionEClass, TableCaption.class, "TableCaption", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTableCaption_OpeningMarker(), theEcorePackage.getEString(), "openingMarker", null, 0, 1, TableCaption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTableCaption_Text(), theEcorePackage.getEString(), "text", null, 0, 1, TableCaption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTableCaption_ClosingMarker(), theEcorePackage.getEString(), "closingMarker", null, 0, 1, TableCaption.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tableCellEClass, TableCell.class, "TableCell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTableCell_OpeningMarker(), theEcorePackage.getEString(), "openingMarker", null, 0, 1, TableCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTableCell_Text(), theEcorePackage.getEString(), "text", null, 0, 1, TableCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTableCell_ClosingMarker(), theEcorePackage.getEString(), "closingMarker", null, 0, 1, TableCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTableCell_Alignment(), this.getTableCellAlignment(), "alignment", null, 0, 1, TableCell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(tableHeadEClass, TableHead.class, "TableHead", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(tableRowEClass, TableRow.class, "TableRow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(tableSeparatorEClass, TableSeparator.class, "TableSeparator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(documentEClass, Document.class, "Document", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDocument_SourceUri(), theEcorePackage.getEString(), "sourceUri", null, 0, 1, Document.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -657,6 +1459,11 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 		addEEnumLiteral(headingLevelEEnum, HeadingLevel.H4);
 		addEEnumLiteral(headingLevelEEnum, HeadingLevel.H5);
 		addEEnumLiteral(headingLevelEEnum, HeadingLevel.H6);
+
+		initEEnum(tableCellAlignmentEEnum, TableCellAlignment.class, "TableCellAlignment");
+		addEEnumLiteral(tableCellAlignmentEEnum, TableCellAlignment.LEFT);
+		addEEnumLiteral(tableCellAlignmentEEnum, TableCellAlignment.CENTER);
+		addEEnumLiteral(tableCellAlignmentEEnum, TableCellAlignment.RIGHT);
 
 		// Create resource
 		createResource(eNS_URI);

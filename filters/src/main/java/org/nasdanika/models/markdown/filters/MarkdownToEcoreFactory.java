@@ -25,6 +25,11 @@ import org.nasdanika.models.markdown.Node;
 
 public class MarkdownToEcoreFactory {
 	
+	private static final String DERIVED_ATTR = "derived";
+	private static final String TYPE_ATTR = "type";
+	private static final String REFERS_ATTR = "refers";
+	private static final String CONTAINS_ATTR = "contains";
+	private static final String SUPER_TYPES_ATTR = "superTypes";
 	private static final String OPPOSITE_ATTR = "opposite";
 	private static final String MULTIPLICITY_ATTR = "multiplicity";
 	private static final String NAME_ATTR = "name";
@@ -183,6 +188,9 @@ public class MarkdownToEcoreFactory {
 			case MULTIPLICITY_ATTR:
 				setMultiplicity(eAttribute, attr.getValue());
 				break;
+			case DERIVED_ATTR:
+				eAttribute.setDerived(true);
+				break;	
 			default:
 				// TODO - add an error or a warning to the resource that only uri, prefix and name attributes are supported
 			}
@@ -218,6 +226,9 @@ public class MarkdownToEcoreFactory {
 			case MULTIPLICITY_ATTR:
 				setMultiplicity(eReference, attr.getValue());
 				break;
+			case DERIVED_ATTR:
+				eReference.setDerived(true);
+				break;	
 			default:
 				// TODO - add an error or a warning to the resource that only uri, prefix and name attributes are supported
 			}
@@ -245,7 +256,7 @@ public class MarkdownToEcoreFactory {
 			ProgressMonitor progressMonitor) {
 		
 		for (Attribute attr: heading.getAttributes()) {
-			if ("superTypes".equals(attr.getKey())) {
+			if (SUPER_TYPES_ATTR.equals(attr.getKey())) {
 				String superTypesStr[] = attr.getValue().split(",");
 				for (String superTypeStr: superTypesStr) {
 					registry.entrySet().stream()
@@ -269,7 +280,7 @@ public class MarkdownToEcoreFactory {
 			ProgressMonitor progressMonitor) {
 				
 		for (Attribute attr: attributeRequest.heading().getAttributes()) {
-			if ("type".equals(attr.getKey())) {
+			if (TYPE_ATTR.equals(attr.getKey())) {
 				String typeStr = attr.getValue().trim();
 				if (!Util.isBlank(typeStr)) {
 					EcoreFactory.eINSTANCE
@@ -296,7 +307,9 @@ public class MarkdownToEcoreFactory {
 			ProgressMonitor progressMonitor) {
 				
 		for (Attribute attr: referenceRequest.heading().getAttributes()) {
-			if ("type".equals(attr.getKey())) {
+			boolean contains = CONTAINS_ATTR.equals(attr.getKey());
+			if (contains || REFERS_ATTR.equals(attr.getKey())) {
+				eReference.setContainment(contains);
 				String typeStr = attr.getValue().trim();
 				if (!Util.isBlank(typeStr)) {
 					registry.entrySet().stream()
@@ -306,7 +319,7 @@ public class MarkdownToEcoreFactory {
 						.findFirst()
 						.ifPresent(eReference::setEType);
 				}
-			}
+			} 
 		}
 	}
 	
@@ -400,4 +413,5 @@ public class MarkdownToEcoreFactory {
         }
         return value;
     }
+    
 }

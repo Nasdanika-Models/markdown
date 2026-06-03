@@ -22,7 +22,10 @@ module org.nasdanika.models.markdown {
 	requires flexmark.util.misc;
 	requires flexmark.util.sequence;
 	requires flexmark.util.builder;
-	requires flexmark.ext.attributes; 	
+	requires flexmark.ext.attributes;
+	requires flexmark.ext.tables;
+	requires flexmark.ext.definition;
+	requires flexmark.ext.gfm.tasklist; 	
 	
 	provides CapabilityFactory with 
 		MarkdownEPackageResourceSetCapabilityFactory,

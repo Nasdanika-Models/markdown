@@ -1,5 +1,23 @@
 # My Product Domain {.product-domain}
 
+Bulleted list:
+
+* One
+* Two {type=twoo}
+* Three
+
+Link: [linking](to_somewhere) {icon="fas fa-gear"} purum
+
+Table:
+
+
+| Header 1 | Header 2 | Header 3 |
+| -------- | -------- | -------- |
+| Item 1   | Data A   | Info X   |
+| Item 2   | Data B   | Info Y   |
+
+
+
 ## Personas {.persona-domain}
 
 ### Senior Leader {.persona #senior-leader period.start=2024-01-01}
@@ -10,6 +28,12 @@ A leader responsible for portfolio outcomes...
 
 - See actual coverage, not claimed coverage {#see-coverage}
 - Surface duplication structurally {#surface-duplication}
+
+
+Numbered list:
+
+1. X
+2. Y
 
 #### Configuration
 

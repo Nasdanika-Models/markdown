@@ -148,6 +148,139 @@ class FencedCodeBlock extends Block {
         
 }
 
+// Lists
+
+abstract class ListBlock extends Block {
+    
+    boolean tight
+    
+} 
+
+class OrderedList extends ListBlock {
+    
+    int startNumber
+    
+    String delimiter
+        
+}
+
+class BulletList extends ListBlock {
+    
+    String openingMarker
+    
+}
+
+class DefinitionList extends ListBlock {
+    
+}
+
+abstract class ListItem extends Block {
+    
+}
+
+class BulletListItem extends ListItem {
+    
+}
+
+class DefinitionItem extends ListItem {
+    
+}
+
+class DefinitionTerm extends ListItem {
+    
+}
+
+class OrderedListItem extends ListItem {
+    
+}
+
+class TaskListItem extends ListItem {
+    
+}
+
+// Links
+
+abstract class LinkNodeBase extends Node {
+    String anchorMarker
+    String anchorRef
+    String pageRef
+    String title
+    String titleClosingMarker
+    String titleOpeningMarker
+    String url
+    String urlClosingMarker
+    String urlOpeningMarker    
+}
+
+abstract class LinkNode extends LinkNodeBase {
+    
+}
+
+abstract class InlineLinkNode extends LinkNode {    
+    String linkClosingMarker
+    String linkOpeningMarker
+    String text
+    String textClosingMarker
+    String textOpeningMarker        
+}
+
+class Link extends InlineLinkNode {
+    
+}
+
+// Tables
+
+class TableBlock extends Block {
+    
+    
+}
+
+class TableBody extends Node {
+    
+}
+
+class TableCaption extends Node {
+
+    String openingMarker
+    
+    String text
+    
+    String closingMarker    
+    
+}
+
+enum TableCellAlignment {
+    
+    LEFT,
+    CENTER,
+    RIGHT
+    
+}
+
+class TableCell extends Node {
+
+    String openingMarker
+    
+    String text
+    
+    String closingMarker    
+    
+    TableCellAlignment alignment
+    
+}
+
+class TableHead extends Node {
+    
+}
+
+class TableRow extends Node {
+    
+}
+
+class TableSeparator extends Node {
+    
+}
+
 /**
  * Root of the Markdown AST.  Corresponds to a single parsed file or string.
  */

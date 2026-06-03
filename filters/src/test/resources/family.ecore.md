@@ -32,7 +32,7 @@ The word “families” can be used metaphorically to create more inclusive cate
 
 ### References
 
-#### Members {type="Person" multiplicity="2..*"}
+#### Members {contains="Person" multiplicity="2..*"}
 
 ## Person {superTypes="Named Element"}
 
@@ -49,13 +49,13 @@ The plural form “people” is often used to refer to an entire nation or ethni
 
 ### References
 
-#### Parents {type="Person" multiplicity="0..2" opposite="Children"}
+#### Parents {refers="Person" multiplicity="0..2" opposite="Children"}
 
-#### Father {type="Man" multiplicity="0..1"}
+#### Father {refers="Man" multiplicity="0..1" derived}
 
-#### Mother {type="Woman" multiplicity="0..1"}
+#### Mother {refers="Woman" multiplicity="0..1" derived}
 
-#### Children {type="Person" multiplicity="*" opposite="Parents"}
+#### Children {refers="Person" multiplicity="*" opposite="Parents"}
 
 
 ## Man {superTypes="Person"}
