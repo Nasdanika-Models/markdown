@@ -488,14 +488,14 @@ public interface MarkdownPackage extends EPackage {
 	int BLOCK_OPERATION_COUNT = CONTENT_NODE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.markdown.impl.HeadingImpl <em>Heading</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.markdown.impl.ContainerImpl <em>Container</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.markdown.impl.HeadingImpl
-	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getHeading()
+	 * @see org.nasdanika.models.markdown.impl.ContainerImpl
+	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getContainer()
 	 * @generated
 	 */
-	int HEADING = 5;
+	int CONTAINER = 5;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -504,7 +504,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING__START_OFFSET = BLOCK__START_OFFSET;
+	int CONTAINER__START_OFFSET = BLOCK__START_OFFSET;
 
 	/**
 	 * The feature id for the '<em><b>Start Line Number</b></em>' attribute.
@@ -513,7 +513,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING__START_LINE_NUMBER = BLOCK__START_LINE_NUMBER;
+	int CONTAINER__START_LINE_NUMBER = BLOCK__START_LINE_NUMBER;
 
 	/**
 	 * The feature id for the '<em><b>End Offset</b></em>' attribute.
@@ -522,7 +522,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING__END_OFFSET = BLOCK__END_OFFSET;
+	int CONTAINER__END_OFFSET = BLOCK__END_OFFSET;
 
 	/**
 	 * The feature id for the '<em><b>End Line Number</b></em>' attribute.
@@ -531,7 +531,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING__END_LINE_NUMBER = BLOCK__END_LINE_NUMBER;
+	int CONTAINER__END_LINE_NUMBER = BLOCK__END_LINE_NUMBER;
 
 	/**
 	 * The feature id for the '<em><b>Chars</b></em>' attribute.
@@ -540,7 +540,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING__CHARS = BLOCK__CHARS;
+	int CONTAINER__CHARS = BLOCK__CHARS;
 
 	/**
 	 * The feature id for the '<em><b>Content</b></em>' attribute.
@@ -549,7 +549,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING__CONTENT = BLOCK__CONTENT;
+	int CONTAINER__CONTENT = BLOCK__CONTENT;
 
 	/**
 	 * The feature id for the '<em><b>Content End Offset</b></em>' attribute.
@@ -558,7 +558,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING__CONTENT_END_OFFSET = BLOCK__CONTENT_END_OFFSET;
+	int CONTAINER__CONTENT_END_OFFSET = BLOCK__CONTENT_END_OFFSET;
 
 	/**
 	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
@@ -567,7 +567,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING__CHILDREN = BLOCK__CHILDREN;
+	int CONTAINER__CHILDREN = BLOCK__CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -576,7 +576,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING__ATTRIBUTES = BLOCK__ATTRIBUTES;
+	int CONTAINER__ATTRIBUTES = BLOCK__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Attributes Start Offset</b></em>' attribute.
@@ -585,7 +585,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING__ATTRIBUTES_START_OFFSET = BLOCK__ATTRIBUTES_START_OFFSET;
+	int CONTAINER__ATTRIBUTES_START_OFFSET = BLOCK__ATTRIBUTES_START_OFFSET;
 
 	/**
 	 * The feature id for the '<em><b>Attributes End Offset</b></em>' attribute.
@@ -594,16 +594,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING__ATTRIBUTES_END_OFFSET = BLOCK__ATTRIBUTES_END_OFFSET;
-
-	/**
-	 * The feature id for the '<em><b>Level</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HEADING__LEVEL = BLOCK_FEATURE_COUNT + 0;
+	int CONTAINER__ATTRIBUTES_END_OFFSET = BLOCK__ATTRIBUTES_END_OFFSET;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -612,7 +603,152 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING__TEXT = BLOCK_FEATURE_COUNT + 1;
+	int CONTAINER__TEXT = BLOCK_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER_FEATURE_COUNT = BLOCK_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER_OPERATION_COUNT = BLOCK_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.markdown.impl.HeadingImpl <em>Heading</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.markdown.impl.HeadingImpl
+	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getHeading()
+	 * @generated
+	 */
+	int HEADING = 6;
+
+	/**
+	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__START_OFFSET = CONTAINER__START_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>Start Line Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__START_LINE_NUMBER = CONTAINER__START_LINE_NUMBER;
+
+	/**
+	 * The feature id for the '<em><b>End Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__END_OFFSET = CONTAINER__END_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>End Line Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__END_LINE_NUMBER = CONTAINER__END_LINE_NUMBER;
+
+	/**
+	 * The feature id for the '<em><b>Chars</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__CHARS = CONTAINER__CHARS;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__CONTENT = CONTAINER__CONTENT;
+
+	/**
+	 * The feature id for the '<em><b>Content End Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__CONTENT_END_OFFSET = CONTAINER__CONTENT_END_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__CHILDREN = CONTAINER__CHILDREN;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__ATTRIBUTES = CONTAINER__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Attributes Start Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__ATTRIBUTES_START_OFFSET = CONTAINER__ATTRIBUTES_START_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>Attributes End Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__ATTRIBUTES_END_OFFSET = CONTAINER__ATTRIBUTES_END_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__TEXT = CONTAINER__TEXT;
+
+	/**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HEADING__LEVEL = CONTAINER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Heading</em>' class.
@@ -621,7 +757,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING_FEATURE_COUNT = BLOCK_FEATURE_COUNT + 2;
+	int HEADING_FEATURE_COUNT = CONTAINER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Heading</em>' class.
@@ -630,7 +766,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int HEADING_OPERATION_COUNT = BLOCK_OPERATION_COUNT + 0;
+	int HEADING_OPERATION_COUNT = CONTAINER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.markdown.impl.ParagraphImpl <em>Paragraph</em>}' class.
@@ -640,7 +776,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getParagraph()
 	 * @generated
 	 */
-	int PARAGRAPH = 6;
+	int PARAGRAPH = 7;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -760,6 +896,187 @@ public interface MarkdownPackage extends EPackage {
 	int PARAGRAPH_OPERATION_COUNT = BLOCK_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.nasdanika.models.markdown.impl.FencedDivImpl <em>Fenced Div</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.markdown.impl.FencedDivImpl
+	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getFencedDiv()
+	 * @generated
+	 */
+	int FENCED_DIV = 8;
+
+	/**
+	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__START_OFFSET = PARAGRAPH__START_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>Start Line Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__START_LINE_NUMBER = PARAGRAPH__START_LINE_NUMBER;
+
+	/**
+	 * The feature id for the '<em><b>End Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__END_OFFSET = PARAGRAPH__END_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>End Line Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__END_LINE_NUMBER = PARAGRAPH__END_LINE_NUMBER;
+
+	/**
+	 * The feature id for the '<em><b>Chars</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__CHARS = PARAGRAPH__CHARS;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__CONTENT = PARAGRAPH__CONTENT;
+
+	/**
+	 * The feature id for the '<em><b>Content End Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__CONTENT_END_OFFSET = PARAGRAPH__CONTENT_END_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__CHILDREN = PARAGRAPH__CHILDREN;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__ATTRIBUTES = PARAGRAPH__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Attributes Start Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__ATTRIBUTES_START_OFFSET = PARAGRAPH__ATTRIBUTES_START_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>Attributes End Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__ATTRIBUTES_END_OFFSET = PARAGRAPH__ATTRIBUTES_END_OFFSET;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__TEXT = PARAGRAPH_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Level</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__LEVEL = PARAGRAPH_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Closing Start Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__CLOSING_START_OFFSET = PARAGRAPH_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Closing Start Line Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__CLOSING_START_LINE_NUMBER = PARAGRAPH_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Closing End Offset</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__CLOSING_END_OFFSET = PARAGRAPH_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Closing End Line Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV__CLOSING_END_LINE_NUMBER = PARAGRAPH_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Fenced Div</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV_FEATURE_COUNT = PARAGRAPH_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of operations of the '<em>Fenced Div</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FENCED_DIV_OPERATION_COUNT = PARAGRAPH_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.nasdanika.models.markdown.impl.FencedCodeBlockImpl <em>Fenced Code Block</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -767,7 +1084,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getFencedCodeBlock()
 	 * @generated
 	 */
-	int FENCED_CODE_BLOCK = 7;
+	int FENCED_CODE_BLOCK = 9;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -957,7 +1274,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getListBlock()
 	 * @generated
 	 */
-	int LIST_BLOCK = 8;
+	int LIST_BLOCK = 10;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -1093,7 +1410,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getOrderedList()
 	 * @generated
 	 */
-	int ORDERED_LIST = 9;
+	int ORDERED_LIST = 11;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -1247,7 +1564,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getBulletList()
 	 * @generated
 	 */
-	int BULLET_LIST = 10;
+	int BULLET_LIST = 12;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -1392,7 +1709,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getDefinitionList()
 	 * @generated
 	 */
-	int DEFINITION_LIST = 11;
+	int DEFINITION_LIST = 13;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -1528,7 +1845,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getListItem()
 	 * @generated
 	 */
-	int LIST_ITEM = 12;
+	int LIST_ITEM = 14;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -1655,7 +1972,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getBulletListItem()
 	 * @generated
 	 */
-	int BULLET_LIST_ITEM = 13;
+	int BULLET_LIST_ITEM = 15;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -1782,7 +2099,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getDefinitionItem()
 	 * @generated
 	 */
-	int DEFINITION_ITEM = 14;
+	int DEFINITION_ITEM = 16;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -1909,7 +2226,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getDefinitionTerm()
 	 * @generated
 	 */
-	int DEFINITION_TERM = 15;
+	int DEFINITION_TERM = 17;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -2036,7 +2353,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getOrderedListItem()
 	 * @generated
 	 */
-	int ORDERED_LIST_ITEM = 16;
+	int ORDERED_LIST_ITEM = 18;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -2163,7 +2480,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getTaskListItem()
 	 * @generated
 	 */
-	int TASK_LIST_ITEM = 17;
+	int TASK_LIST_ITEM = 19;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -2290,7 +2607,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getLinkNodeBase()
 	 * @generated
 	 */
-	int LINK_NODE_BASE = 18;
+	int LINK_NODE_BASE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -2471,7 +2788,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getLinkNode()
 	 * @generated
 	 */
-	int LINK_NODE = 19;
+	int LINK_NODE = 21;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -2652,7 +2969,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getInlineLinkNode()
 	 * @generated
 	 */
-	int INLINE_LINK_NODE = 20;
+	int INLINE_LINK_NODE = 22;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -2878,7 +3195,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getLink()
 	 * @generated
 	 */
-	int LINK = 21;
+	int LINK = 23;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -3104,7 +3421,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getTableBlock()
 	 * @generated
 	 */
-	int TABLE_BLOCK = 22;
+	int TABLE_BLOCK = 24;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -3231,7 +3548,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getTableBody()
 	 * @generated
 	 */
-	int TABLE_BODY = 23;
+	int TABLE_BODY = 25;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -3331,7 +3648,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getTableCaption()
 	 * @generated
 	 */
-	int TABLE_CAPTION = 24;
+	int TABLE_CAPTION = 26;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -3458,7 +3775,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getTableCell()
 	 * @generated
 	 */
-	int TABLE_CELL = 25;
+	int TABLE_CELL = 27;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -3594,7 +3911,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getTableHead()
 	 * @generated
 	 */
-	int TABLE_HEAD = 26;
+	int TABLE_HEAD = 28;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -3694,7 +4011,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getTableRow()
 	 * @generated
 	 */
-	int TABLE_ROW = 27;
+	int TABLE_ROW = 29;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -3794,7 +4111,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getTableSeparator()
 	 * @generated
 	 */
-	int TABLE_SEPARATOR = 28;
+	int TABLE_SEPARATOR = 30;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -3894,7 +4211,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getDocument()
 	 * @generated
 	 */
-	int DOCUMENT = 29;
+	int DOCUMENT = 31;
 
 	/**
 	 * The feature id for the '<em><b>Start Offset</b></em>' attribute.
@@ -4030,7 +4347,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getHeadingLevel()
 	 * @generated
 	 */
-	int HEADING_LEVEL = 30;
+	int HEADING_LEVEL = 32;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.markdown.TableCellAlignment <em>Table Cell Alignment</em>}' enum.
@@ -4040,7 +4357,7 @@ public interface MarkdownPackage extends EPackage {
 	 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getTableCellAlignment()
 	 * @generated
 	 */
-	int TABLE_CELL_ALIGNMENT = 31;
+	int TABLE_CELL_ALIGNMENT = 33;
 
 
 	/**
@@ -4237,6 +4554,27 @@ public interface MarkdownPackage extends EPackage {
 	EClass getBlock();
 
 	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.markdown.Container <em>Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Container</em>'.
+	 * @see org.nasdanika.models.markdown.Container
+	 * @generated
+	 */
+	EClass getContainer();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.Container#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see org.nasdanika.models.markdown.Container#getText()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Text();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.markdown.Heading <em>Heading</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4258,17 +4596,6 @@ public interface MarkdownPackage extends EPackage {
 	EAttribute getHeading_Level();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.Heading#getText <em>Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see org.nasdanika.models.markdown.Heading#getText()
-	 * @see #getHeading()
-	 * @generated
-	 */
-	EAttribute getHeading_Text();
-
-	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.markdown.Paragraph <em>Paragraph</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4277,6 +4604,71 @@ public interface MarkdownPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getParagraph();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.markdown.FencedDiv <em>Fenced Div</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Fenced Div</em>'.
+	 * @see org.nasdanika.models.markdown.FencedDiv
+	 * @generated
+	 */
+	EClass getFencedDiv();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.FencedDiv#getLevel <em>Level</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Level</em>'.
+	 * @see org.nasdanika.models.markdown.FencedDiv#getLevel()
+	 * @see #getFencedDiv()
+	 * @generated
+	 */
+	EAttribute getFencedDiv_Level();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.FencedDiv#getClosingStartOffset <em>Closing Start Offset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Closing Start Offset</em>'.
+	 * @see org.nasdanika.models.markdown.FencedDiv#getClosingStartOffset()
+	 * @see #getFencedDiv()
+	 * @generated
+	 */
+	EAttribute getFencedDiv_ClosingStartOffset();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.FencedDiv#getClosingStartLineNumber <em>Closing Start Line Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Closing Start Line Number</em>'.
+	 * @see org.nasdanika.models.markdown.FencedDiv#getClosingStartLineNumber()
+	 * @see #getFencedDiv()
+	 * @generated
+	 */
+	EAttribute getFencedDiv_ClosingStartLineNumber();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.FencedDiv#getClosingEndOffset <em>Closing End Offset</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Closing End Offset</em>'.
+	 * @see org.nasdanika.models.markdown.FencedDiv#getClosingEndOffset()
+	 * @see #getFencedDiv()
+	 * @generated
+	 */
+	EAttribute getFencedDiv_ClosingEndOffset();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.markdown.FencedDiv#getClosingEndLineNumber <em>Closing End Line Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Closing End Line Number</em>'.
+	 * @see org.nasdanika.models.markdown.FencedDiv#getClosingEndLineNumber()
+	 * @see #getFencedDiv()
+	 * @generated
+	 */
+	EAttribute getFencedDiv_ClosingEndLineNumber();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.markdown.FencedCodeBlock <em>Fenced Code Block</em>}'.
@@ -5069,6 +5461,24 @@ public interface MarkdownPackage extends EPackage {
 		EClass BLOCK = eINSTANCE.getBlock();
 
 		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.markdown.impl.ContainerImpl <em>Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.markdown.impl.ContainerImpl
+		 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getContainer()
+		 * @generated
+		 */
+		EClass CONTAINER = eINSTANCE.getContainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__TEXT = eINSTANCE.getContainer_Text();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.markdown.impl.HeadingImpl <em>Heading</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5087,14 +5497,6 @@ public interface MarkdownPackage extends EPackage {
 		EAttribute HEADING__LEVEL = eINSTANCE.getHeading_Level();
 
 		/**
-		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute HEADING__TEXT = eINSTANCE.getHeading_Text();
-
-		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.markdown.impl.ParagraphImpl <em>Paragraph</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5103,6 +5505,56 @@ public interface MarkdownPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PARAGRAPH = eINSTANCE.getParagraph();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.markdown.impl.FencedDivImpl <em>Fenced Div</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.markdown.impl.FencedDivImpl
+		 * @see org.nasdanika.models.markdown.impl.MarkdownPackageImpl#getFencedDiv()
+		 * @generated
+		 */
+		EClass FENCED_DIV = eINSTANCE.getFencedDiv();
+
+		/**
+		 * The meta object literal for the '<em><b>Level</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FENCED_DIV__LEVEL = eINSTANCE.getFencedDiv_Level();
+
+		/**
+		 * The meta object literal for the '<em><b>Closing Start Offset</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FENCED_DIV__CLOSING_START_OFFSET = eINSTANCE.getFencedDiv_ClosingStartOffset();
+
+		/**
+		 * The meta object literal for the '<em><b>Closing Start Line Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FENCED_DIV__CLOSING_START_LINE_NUMBER = eINSTANCE.getFencedDiv_ClosingStartLineNumber();
+
+		/**
+		 * The meta object literal for the '<em><b>Closing End Offset</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FENCED_DIV__CLOSING_END_OFFSET = eINSTANCE.getFencedDiv_ClosingEndOffset();
+
+		/**
+		 * The meta object literal for the '<em><b>Closing End Line Number</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FENCED_DIV__CLOSING_END_LINE_NUMBER = eINSTANCE.getFencedDiv_ClosingEndLineNumber();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.markdown.impl.FencedCodeBlockImpl <em>Fenced Code Block</em>}' class.

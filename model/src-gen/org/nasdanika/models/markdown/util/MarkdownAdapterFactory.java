@@ -88,12 +88,20 @@ public class MarkdownAdapterFactory extends AdapterFactoryImpl {
 				return createBlockAdapter();
 			}
 			@Override
+			public Adapter caseContainer(Container object) {
+				return createContainerAdapter();
+			}
+			@Override
 			public Adapter caseHeading(Heading object) {
 				return createHeadingAdapter();
 			}
 			@Override
 			public Adapter caseParagraph(Paragraph object) {
 				return createParagraphAdapter();
+			}
+			@Override
+			public Adapter caseFencedDiv(FencedDiv object) {
+				return createFencedDivAdapter();
 			}
 			@Override
 			public Adapter caseFencedCodeBlock(FencedCodeBlock object) {
@@ -278,6 +286,20 @@ public class MarkdownAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.Container <em>Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.markdown.Container
+	 * @generated
+	 */
+	public Adapter createContainerAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.Heading <em>Heading</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -302,6 +324,20 @@ public class MarkdownAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createParagraphAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.markdown.FencedDiv <em>Fenced Div</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.markdown.FencedDiv
+	 * @generated
+	 */
+	public Adapter createFencedDivAdapter() {
 		return null;
 	}
 

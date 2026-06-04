@@ -97,7 +97,7 @@ public class MarkdownToEcoreFactory {
 			}
 		}
 		
-		int ownContentStartOffset = Math.max(heading.getAttributesEndOffset(), heading.getAttributesEndOffset());
+		int ownContentStartOffset = Math.max(heading.getEndOffset(), heading.getAttributesEndOffset());
 		int ownContentEndOffset = heading.getContentEndOffset();		
 		
 		for (Node child: heading.getChildren()) {

@@ -93,6 +93,8 @@ public class MarkdownTests {
                 # Heading 1 again
                 
                 zusu
+                
+                ########## Heading 10 {#id .class key=value}
 
                 
                 """;

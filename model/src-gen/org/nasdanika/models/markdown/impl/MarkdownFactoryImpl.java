@@ -62,6 +62,7 @@ public class MarkdownFactoryImpl extends EFactoryImpl implements MarkdownFactory
 			case MarkdownPackage.ATTRIBUTE: return createAttribute();
 			case MarkdownPackage.HEADING: return createHeading();
 			case MarkdownPackage.PARAGRAPH: return createParagraph();
+			case MarkdownPackage.FENCED_DIV: return createFencedDiv();
 			case MarkdownPackage.FENCED_CODE_BLOCK: return createFencedCodeBlock();
 			case MarkdownPackage.ORDERED_LIST: return createOrderedList();
 			case MarkdownPackage.BULLET_LIST: return createBulletList();
@@ -172,6 +173,17 @@ public class MarkdownFactoryImpl extends EFactoryImpl implements MarkdownFactory
 	public Paragraph createParagraph() {
 		ParagraphImpl paragraph = new ParagraphImpl();
 		return paragraph;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public FencedDiv createFencedDiv() {
+		FencedDivImpl fencedDiv = new FencedDivImpl();
+		return fencedDiv;
 	}
 
 	/**

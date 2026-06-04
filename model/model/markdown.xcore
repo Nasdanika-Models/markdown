@@ -103,13 +103,20 @@ abstract class Block extends ContentNode, Attributable {
 }
 
 /**
- * A heading (# … ######).
+ * Base class for headings and fenced divs which are used to create a hierarchy of model elements.
  */
-class Heading extends Block {
-    
-    HeadingLevel[1] level = "H1"
+abstract class Container extends Block {
     
     String text
+    
+}
+
+/**
+ * A heading (# … ######).
+ */
+class Heading extends Container {
+    
+    HeadingLevel[1] level = "H1"
     
 }
 
@@ -125,6 +132,24 @@ class Paragraph extends Block {
 //hasTableSeparator()
 //isTrailingBlankLine()
 
+}
+
+/**
+ * A paragraph starting with 3 or more colons. 
+ */
+class FencedDiv extends Paragraph, Container {
+
+    /**
+     * Number of colons minus 2. E.g. 1 for :::, 2 for ::::
+     */    
+    int level    
+    
+    int closingStartOffset
+    int closingStartLineNumber
+    
+    int closingEndOffset
+    int closingEndLineNumber
+        
 }
 
 /**

@@ -4,6 +4,8 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 
 import org.nasdanika.models.markdown.Attributable;
+import org.nasdanika.models.markdown.Block;
+import org.nasdanika.models.markdown.FencedDiv;
 import org.nasdanika.models.markdown.MarkdownFactory;
 import org.nasdanika.models.markdown.TableCellAlignment;
 
@@ -45,6 +47,8 @@ public class MarkdownVisitor {
     private Map<Node, org.nasdanika.models.markdown.Node> nodeMap = new IdentityHashMap<>();  // to keep track of created Ecore nodes for each visited AST node
     
     private org.nasdanika.models.markdown.Block currentContainerBlock;  
+    
+    private static final String FENCED_DIV_PREFIX = ":::";
 
     public MarkdownVisitor(org.nasdanika.models.markdown.Document root) {
         this.root = root;
@@ -89,7 +93,20 @@ public class MarkdownVisitor {
         setChildrenContent(root.getChars(), root);        
     }
     
-    private void setChildrenContent(String docContent, org.nasdanika.models.markdown.Node node) {
+//    private int getInnerEndOffset(org.nasdanika.models.markdown.Node node) {
+//    	return node instanceof FencedDiv fencedDiv && fencedDiv.getClosingStartOffset() > 0 ? fencedDiv.getClosingStartOffset() : node.getEndOffset();
+//	}
+//    
+//    private int getOuterEndOffset(org.nasdanika.models.markdown.Node node) {
+//    	return node instanceof FencedDiv fencedDiv && fencedDiv.getClosingEndOffset() > 0 ? fencedDiv.getClosingEndOffset() : node.getEndOffset();
+//	}
+    
+    private void setChildrenContent(String docContent, org.nasdanika.models.markdown.Node node) {		
+		if (node instanceof FencedDiv fencedDiv && fencedDiv.getClosingStartOffset() > 0) {
+			fencedDiv.setContent(docContent.substring(fencedDiv.getStartOffset(), fencedDiv.getClosingStartOffset()));
+			fencedDiv.setContentEndOffset(fencedDiv.getClosingStartOffset());
+		}
+		
     	org.nasdanika.models.markdown.Node childNode = null;
     	for (org.nasdanika.models.markdown.Node cn: node.getChildren()) {
     		if (childNode != null) {
@@ -145,19 +162,61 @@ public class MarkdownVisitor {
 	protected MarkdownFactory getFactory() {
 		return MarkdownFactory.eINSTANCE;
 	}
+	
+	private FencedDiv matchOpeningFencedDiv(int fencedDivLevel) {
+		for (Block containerBlock = currentContainerBlock; containerBlock != null || containerBlock != root; containerBlock = (org.nasdanika.models.markdown.Block) containerBlock.eContainer()) {
+			if (containerBlock instanceof FencedDiv currentFencedDiv && currentFencedDiv.getLevel() <= fencedDivLevel) {
+				return currentFencedDiv;
+			}
+		}
+		return null;
+	}
+		
+	private static int getFencedDivLevel(String text) {
+		int level = 0;
+		while (text.startsWith(FENCED_DIV_PREFIX, level)) {
+			++level;
+		}
+		return level;		
+	}	
 
-    private void visitParagraph(Paragraph node) {
-    	org.nasdanika.models.markdown.Paragraph para = getFactory().createParagraph();
+    private void visitParagraph(Paragraph node) {    	
+    	String text = node.getChars().toString();
+		int fencedDivLevel = getFencedDivLevel(text);
+    	org.nasdanika.models.markdown.Paragraph para = fencedDivLevel == 0 ? getFactory().createParagraph() : getFactory().createFencedDiv();    	    	
+		boolean setAsContainer = false;
+    	if (fencedDivLevel > 0) {
+    		FencedDiv fencedDiv = (FencedDiv) para;
+			fencedDiv.setLevel(fencedDivLevel);
+			fencedDiv.setText(node.getChars().toString().substring(fencedDivLevel + 2).trim());
+
+    		if (text.trim().length() == FENCED_DIV_PREFIX.length() + fencedDivLevel - 1) { // Closing fenced div marker should have only the colons and optional whitespace
+				FencedDiv openingFencedDiv = matchOpeningFencedDiv(fencedDivLevel);
+				if (openingFencedDiv != null) {
+					openingFencedDiv.setClosingStartLineNumber(node.getStartLineNumber());
+					openingFencedDiv.setClosingStartOffset(node.getStartOffset());
+					openingFencedDiv.setClosingEndLineNumber(node.getEndLineNumber());
+					openingFencedDiv.setClosingEndOffset(node.getEndOffset());
+	    			currentContainerBlock = (org.nasdanika.models.markdown.Block) openingFencedDiv.eContainer();	
+					return;
+				}
+			} else {
+				setAsContainer = true;					
+			}
+		} 
+    	
     	populateContentNode(node, para);
-        
-        // TODO
-//        getLineIndent(int)
-//        getLineIndents()
-//        getSegments()
-//        hasTableSeparator()
-//        isTrailingBlankLine()
-        
+//      getLineIndent(int)
+//      getLineIndents()
+//      getSegments()
+//      hasTableSeparator()
+//      isTrailingBlankLine()
+    	
     	addToParent(node, para);
+    	if (setAsContainer) {
+    		currentContainerBlock = para;
+    	}
+        
         visitor.visitChildren(node);
     }
     

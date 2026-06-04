@@ -100,9 +100,20 @@ public class MarkdownSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case MarkdownPackage.CONTAINER: {
+				Container container = (Container)theEObject;
+				T result = caseContainer(container);
+				if (result == null) result = caseBlock(container);
+				if (result == null) result = caseContentNode(container);
+				if (result == null) result = caseAttributable(container);
+				if (result == null) result = caseNode(container);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case MarkdownPackage.HEADING: {
 				Heading heading = (Heading)theEObject;
 				T result = caseHeading(heading);
+				if (result == null) result = caseContainer(heading);
 				if (result == null) result = caseBlock(heading);
 				if (result == null) result = caseContentNode(heading);
 				if (result == null) result = caseAttributable(heading);
@@ -117,6 +128,18 @@ public class MarkdownSwitch<T> extends Switch<T> {
 				if (result == null) result = caseContentNode(paragraph);
 				if (result == null) result = caseAttributable(paragraph);
 				if (result == null) result = caseNode(paragraph);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case MarkdownPackage.FENCED_DIV: {
+				FencedDiv fencedDiv = (FencedDiv)theEObject;
+				T result = caseFencedDiv(fencedDiv);
+				if (result == null) result = caseParagraph(fencedDiv);
+				if (result == null) result = caseContainer(fencedDiv);
+				if (result == null) result = caseBlock(fencedDiv);
+				if (result == null) result = caseContentNode(fencedDiv);
+				if (result == null) result = caseAttributable(fencedDiv);
+				if (result == null) result = caseNode(fencedDiv);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -414,6 +437,21 @@ public class MarkdownSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseContainer(Container object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Heading</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -440,6 +478,21 @@ public class MarkdownSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseParagraph(Paragraph object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Fenced Div</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Fenced Div</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFencedDiv(FencedDiv object) {
 		return null;
 	}
 

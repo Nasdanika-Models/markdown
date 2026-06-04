@@ -46,3 +46,21 @@ evidence:
 
 So be it! {so="be it"}
 
+:::: {type="someType"}
+
+Turum-purum
+
+::::: {type="some other type"}
+
+Param-dudu
+
+##### Nested paragraph
+
+Nested paragraph text
+
+:::::
+
+Level 2 footer
+
+::::
+

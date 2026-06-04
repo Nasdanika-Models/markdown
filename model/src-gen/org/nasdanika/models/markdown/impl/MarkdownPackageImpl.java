@@ -22,6 +22,7 @@ import org.nasdanika.models.markdown.DefinitionList;
 import org.nasdanika.models.markdown.DefinitionTerm;
 import org.nasdanika.models.markdown.Document;
 import org.nasdanika.models.markdown.FencedCodeBlock;
+import org.nasdanika.models.markdown.FencedDiv;
 import org.nasdanika.models.markdown.Heading;
 import org.nasdanika.models.markdown.HeadingLevel;
 import org.nasdanika.models.markdown.InlineLinkNode;
@@ -93,6 +94,13 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass containerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass headingEClass = null;
 
 	/**
@@ -101,6 +109,13 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 	 * @generated
 	 */
 	private EClass paragraphEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fencedDivEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -526,6 +541,26 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 	 * @generated
 	 */
 	@Override
+	public EClass getContainer() {
+		return containerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getContainer_Text() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getHeading() {
 		return headingEClass;
 	}
@@ -546,8 +581,8 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getHeading_Text() {
-		return (EAttribute)headingEClass.getEStructuralFeatures().get(1);
+	public EClass getParagraph() {
+		return paragraphEClass;
 	}
 
 	/**
@@ -556,8 +591,58 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getParagraph() {
-		return paragraphEClass;
+	public EClass getFencedDiv() {
+		return fencedDivEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFencedDiv_Level() {
+		return (EAttribute)fencedDivEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFencedDiv_ClosingStartOffset() {
+		return (EAttribute)fencedDivEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFencedDiv_ClosingStartLineNumber() {
+		return (EAttribute)fencedDivEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFencedDiv_ClosingEndOffset() {
+		return (EAttribute)fencedDivEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFencedDiv_ClosingEndLineNumber() {
+		return (EAttribute)fencedDivEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1192,11 +1277,20 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 
 		blockEClass = createEClass(BLOCK);
 
+		containerEClass = createEClass(CONTAINER);
+		createEAttribute(containerEClass, CONTAINER__TEXT);
+
 		headingEClass = createEClass(HEADING);
 		createEAttribute(headingEClass, HEADING__LEVEL);
-		createEAttribute(headingEClass, HEADING__TEXT);
 
 		paragraphEClass = createEClass(PARAGRAPH);
+
+		fencedDivEClass = createEClass(FENCED_DIV);
+		createEAttribute(fencedDivEClass, FENCED_DIV__LEVEL);
+		createEAttribute(fencedDivEClass, FENCED_DIV__CLOSING_START_OFFSET);
+		createEAttribute(fencedDivEClass, FENCED_DIV__CLOSING_START_LINE_NUMBER);
+		createEAttribute(fencedDivEClass, FENCED_DIV__CLOSING_END_OFFSET);
+		createEAttribute(fencedDivEClass, FENCED_DIV__CLOSING_END_LINE_NUMBER);
 
 		fencedCodeBlockEClass = createEClass(FENCED_CODE_BLOCK);
 		createEAttribute(fencedCodeBlockEClass, FENCED_CODE_BLOCK__INFO);
@@ -1316,8 +1410,11 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 		contentNodeEClass.getESuperTypes().add(this.getNode());
 		blockEClass.getESuperTypes().add(this.getContentNode());
 		blockEClass.getESuperTypes().add(this.getAttributable());
-		headingEClass.getESuperTypes().add(this.getBlock());
+		containerEClass.getESuperTypes().add(this.getBlock());
+		headingEClass.getESuperTypes().add(this.getContainer());
 		paragraphEClass.getESuperTypes().add(this.getBlock());
+		fencedDivEClass.getESuperTypes().add(this.getParagraph());
+		fencedDivEClass.getESuperTypes().add(this.getContainer());
 		fencedCodeBlockEClass.getESuperTypes().add(this.getBlock());
 		listBlockEClass.getESuperTypes().add(this.getBlock());
 		orderedListEClass.getESuperTypes().add(this.getListBlock());
@@ -1366,11 +1463,20 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 
 		initEClass(blockEClass, Block.class, "Block", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(containerEClass, org.nasdanika.models.markdown.Container.class, "Container", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getContainer_Text(), theEcorePackage.getEString(), "text", null, 0, 1, org.nasdanika.models.markdown.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(headingEClass, Heading.class, "Heading", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getHeading_Level(), this.getHeadingLevel(), "level", "H1", 1, 1, Heading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getHeading_Text(), theEcorePackage.getEString(), "text", null, 0, 1, Heading.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(paragraphEClass, Paragraph.class, "Paragraph", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(fencedDivEClass, FencedDiv.class, "FencedDiv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFencedDiv_Level(), theEcorePackage.getEInt(), "level", null, 0, 1, FencedDiv.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFencedDiv_ClosingStartOffset(), theEcorePackage.getEInt(), "closingStartOffset", null, 0, 1, FencedDiv.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFencedDiv_ClosingStartLineNumber(), theEcorePackage.getEInt(), "closingStartLineNumber", null, 0, 1, FencedDiv.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFencedDiv_ClosingEndOffset(), theEcorePackage.getEInt(), "closingEndOffset", null, 0, 1, FencedDiv.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFencedDiv_ClosingEndLineNumber(), theEcorePackage.getEInt(), "closingEndLineNumber", null, 0, 1, FencedDiv.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(fencedCodeBlockEClass, FencedCodeBlock.class, "FencedCodeBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFencedCodeBlock_Info(), theEcorePackage.getEString(), "info", null, 0, 1, FencedCodeBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1550,6 +1656,12 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 			   "documentation", "*\nBase class for all block-level elements.\nEvery block may carry Flexmark attributes."
 		   });
 		addAnnotation
+		  (containerEClass,
+		   source,
+		   new String[] {
+			   "documentation", "*\nBase class for headings and fenced divs which are used to create a hierarchy of model elements."
+		   });
+		addAnnotation
 		  (headingEClass,
 		   source,
 		   new String[] {
@@ -1560,6 +1672,18 @@ public class MarkdownPackageImpl extends EPackageImpl implements MarkdownPackage
 		   source,
 		   new String[] {
 			   "documentation", "*\nA paragraph \u2014 one or more lines of inline content."
+		   });
+		addAnnotation
+		  (fencedDivEClass,
+		   source,
+		   new String[] {
+			   "documentation", "*\nA paragraph starting with 3 or more colons."
+		   });
+		addAnnotation
+		  (getFencedDiv_Level(),
+		   source,
+		   new String[] {
+			   "documentation", "*\nNumber of colons minus 2. E.g. 1 for :::, 2 for ::::"
 		   });
 		addAnnotation
 		  (fencedCodeBlockEClass,

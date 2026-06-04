@@ -67,6 +67,15 @@ public interface MarkdownFactory extends EFactory {
 	Paragraph createParagraph();
 
 	/**
+	 * Returns a new object of class '<em>Fenced Div</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Fenced Div</em>'.
+	 * @generated
+	 */
+	FencedDiv createFencedDiv();
+
+	/**
 	 * Returns a new object of class '<em>Fenced Code Block</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
