@@ -32,7 +32,6 @@ public class MarkdownContentsFilteringTests {
 		Resource ecoreResource = resourceSet.createResource(URI.createFileURI(ecoreFile.getAbsolutePath()));
 		ecoreResource.getContents().add(EcoreUtil.copy(ePackage));
 		ecoreResource.save(null);
-	}
-	
+	}	
 
 }
