@@ -3,7 +3,10 @@ package org.nasdanika.models.markdown.capability;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
+import java.io.Writer;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +53,17 @@ public class MarkdownResource extends ContentsFilteringResource {
 	 */
 	protected List<EObject> filter(Document document) {
 		return List.of(document);
+	}
+	
+	@Override
+	protected void saveContents(List<EObject> contents, OutputStream outputStream, Map<?, ?> options) throws IOException {
+		try (Writer writer = new OutputStreamWriter(outputStream)) {
+			for (EObject eObject : contents) {
+				if (eObject instanceof Document document) {
+					writer.write(document.getContent()); // Simple writing back.
+				}
+			}
+		}
 	}
 			
 }
