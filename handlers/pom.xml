@@ -8,9 +8,9 @@
         <artifactId>parent</artifactId>
         <relativePath>..</relativePath>
     </parent>
-    <artifactId>filters</artifactId>
+    <artifactId>handlers</artifactId>
     <packaging>jar</packaging>
-    <name>Resource Contents Filters</name>
+    <name>Resource Contents Handlers</name>
 
     <dependencies>
         <dependency>

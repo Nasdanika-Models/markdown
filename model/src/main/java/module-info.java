@@ -1,5 +1,7 @@
 import org.nasdanika.capability.CapabilityFactory;
+import org.nasdanika.models.markdown.capability.MarkdownArrayResourceContentsHandlerCapabilityFactory;
 import org.nasdanika.models.markdown.capability.MarkdownEPackageResourceSetCapabilityFactory;
+import org.nasdanika.models.markdown.capability.MarkdownResourceContentsHandlerCapabilityFactory;
 import org.nasdanika.models.markdown.capability.MarkdownResourceFactoryCapabilityFactory;
 
 module org.nasdanika.models.markdown {
@@ -29,6 +31,8 @@ module org.nasdanika.models.markdown {
 	
 	provides CapabilityFactory with 
 		MarkdownEPackageResourceSetCapabilityFactory,
-		MarkdownResourceFactoryCapabilityFactory;
+		MarkdownResourceFactoryCapabilityFactory,
+		MarkdownResourceContentsHandlerCapabilityFactory,
+		MarkdownArrayResourceContentsHandlerCapabilityFactory;
 	
 }
