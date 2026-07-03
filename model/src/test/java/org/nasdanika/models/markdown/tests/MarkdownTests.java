@@ -136,7 +136,6 @@ public class MarkdownTests {
 		Resource xmlResource = resourceSet.createResource(URI.createFileURI(xmlFile.getAbsolutePath()));
 		xmlResource.getContents().add(EcoreUtil.copy(document));
 		xmlResource.save(null);		
-	}
-	
+	}	
 
 }
